@@ -10,3 +10,13 @@ ln -s $HOME/bin/.aliases
 ln -s $HOME/bin/.vim
 ln -s $HOME/bin/.vimrc
 touch $HOME/.localaliases
+echo "Creating standard dirs"
+mkdir $HOME/projects >& /dev/null
+mkdir $HOME/{seeds,torrents,local,workspace,iso}  >& /dev/null
+mkdir $HOME/iso/{linux,msft,mac}
+
+echo "Standard coding projects go in $HOME/projects"
+echo "eclipse code goes in $HOME/workspace"
+echo "any $HOME install goes into $HOME/local and binary is symlinked in $HOME/bin/private"
+echo "seeds/torrents are self explantory if used"
+echo "most of my system end up with one or two isos.. which go in the iso folder, optionally sorted by OS"
