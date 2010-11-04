@@ -39,5 +39,5 @@ export PATH=/Developer/jdk1.6.0_21/bin:$PATH
 alias apta='sudo apt-get update && sudo apt-get dist-upgrade'
 
 export ANT_HOME=/usr/share/ant/
-
+alias addPath="export PATH=$PATH:$(pwd)"
 
