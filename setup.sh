@@ -9,3 +9,4 @@ ln -s $HOME/bin/.zshrc
 ln -s $HOME/bin/.aliases
 ln -s $HOME/bin/.vim
 ln -s $HOME/bin/.vimrc
+touch $HOME/.localaliases
