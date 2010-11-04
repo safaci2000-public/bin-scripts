@@ -1,0 +1,43 @@
+set -o vi 
+alias ls='ls --color'
+alias ll='ls -lh'
+alias la='ls -la'
+alias c=clear
+alias techie="ssh user@techieworld.org"
+
+export PATH=~/bin:$PATH
+export PATH=$PATH:$HOME/local/nexus-webapp-1.3.6/bin/jsw/linux-x86-64
+export PATH=$PATH:/opt/maven/bin/
+export PATH=$PATH:/usr/share/java/apache-ant/bin/
+export PATH=$PATH:/opt/java/bin/
+#export PATH=$PATH:/home/user/NLP/LADR-2009-02A/bin
+export PATH=$PATH:/home/user/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:$HOME/depot_tools
+export PATH=$PATH:/var/lib/gems/1.8/gems/cheat-1.2.1/bin/
+export JAVA_HOME=/opt/java/
+
+alias rshl='rsync --bwlimit=500'
+
+export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
+
+export EDITOR=/usr/bin/vim
+export PATH=$PATH:/usr/local/bin
+alias m="/usr/local/bin/rmath /usr/local/bin/math"
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/projects/android_downloads/android-sdk-linux_86/tools
+export PATH=$PATH:/usr/local/bin
+
+## CVS
+export CVS_RSH=ssh
+export CVSROOT=cvs:/cvs
+export CVS_RSH CVSROOT
+##java
+#
+export JAVA_HOME=/Developer/jdk1.6.0_21
+export PATH=/Developer/jdk1.6.0_21/bin:$PATH
+alias apta='sudo apt-get update && sudo apt-get dist-upgrade'
+
+export ANT_HOME=/usr/share/ant/
+
+
