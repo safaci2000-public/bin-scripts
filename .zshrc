@@ -18,3 +18,4 @@ bindkey -M vicmd 'v' edit-command-line
 
 export TARGET=TEST
 export PATH=/Developer/bin:$PATH
+export PATH=$PATH:$HOME/bin/private
