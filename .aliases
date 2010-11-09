@@ -7,18 +7,21 @@ alias techie="ssh user@techieworld.org"
 
 export PATH=~/bin:$PATH
 export PATH=$PATH:/home/user/bin
+
+##Required for silly Ubuntu behavior.
 export PATH=$PATH:/var/lib/gems/1.8/gems/cheat-1.2.1/bin/
 
 alias rshl='rsync --bwlimit=500'
 
-export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
+##eclipse bug, not sure if its still needed.
+export GDK_NATIVE_WINDOWS=true  
 
 export EDITOR=/usr/bin/vim
 export PATH=$PATH:/usr/local/bin
 alias m="/usr/local/bin/rmath /usr/local/bin/math"
+
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/projects/android_downloads/android-sdk-linux_86/tools
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:$HOME/projects/android-sdk-linux_86/tools
 
 ## CVS
 export CVS_RSH=ssh
@@ -26,10 +29,8 @@ export CVSROOT=cvs:/cvs
 export CVS_RSH CVSROOT
 ##java
 #
-export JAVA_HOME=/Developer/jdk
 alias apta='sudo apt-get update && sudo apt-get dist-upgrade'
 alias ppac='sudo pacman -Syu'  ## am I really this lazy?
 
 export ANT_HOME=/usr/share/ant/
-#alias addPath="export OPATH=$PATH;export PATH=$PATH:$(pwd)"
-#alias resPath="export PATH=$OPATH"
+

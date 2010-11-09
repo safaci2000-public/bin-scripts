@@ -20,3 +20,17 @@ export TARGET=TEST
 export PATH=/Developer/bin:$PATH
 export PATH=$PATH:$HOME/bin/private
 alias -g BR='>& /dev/null &|'
+
+addPath()
+{
+    export OLDPATH=$PATH
+    export PATH=$PATH:$PWD
+}
+
+resPath()
+{
+    export PATH=$OLDPATH
+
+}
+#alias addPath="export OPATH=$PATH;export PATH=$PATH:$(pwd)"
+#alias resPath="export PATH=$OPATH"
