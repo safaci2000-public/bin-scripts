@@ -32,5 +32,8 @@ resPath()
     export PATH=$OLDPATH
 
 }
-#alias addPath="export OPATH=$PATH;export PATH=$PATH:$(pwd)"
-#alias resPath="export PATH=$OPATH"
+
+cdg()
+{
+    cd $1/$1-git
+}
