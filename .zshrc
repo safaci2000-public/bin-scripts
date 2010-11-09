@@ -21,6 +21,7 @@ export PATH=/Developer/bin:$PATH
 export PATH=$PATH:$HOME/bin/private
 alias -g BR='>& /dev/null &|'
 
+##single path operation, lets me add/restore a single extra path.
 addPath()
 {
     export OLDPATH=$PATH
@@ -32,6 +33,18 @@ resPath()
     export PATH=$OLDPATH
 
 }
+
+## if adding multiple $PATH, save state lets you restore from one past point in history.
+saveState()
+{
+    export PATHSTATE=$PATH
+}
+
+resState()
+{
+    export PATH=$PATHSTATE
+
+} 
 
 cdg()
 {
