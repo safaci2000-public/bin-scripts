@@ -13,7 +13,7 @@ export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
 #export PS1='%n %! %%> '
 #export PS1='%n %{$fg[yellow]%}%D{%a, %b%d} %{$reset_color%}% %%> '
 #%K{white}%F{red}%(?..(%?%))%K{black}%F{white}%B%(2L.+.)%(1j.[%j].)%F{yellow}%(t.Ding!.%D{%L:%M})%f%k%b%#
-export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %%> '
+export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! %%> '
 # Created by newuser for 4.3.9
 source ~/.aliases  ## Generic aliases
 source ~/.localaliases  ## Machine dependent aliases
