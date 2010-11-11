@@ -9,7 +9,7 @@ export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
 export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! %%> '
 
 source ~/.aliases  ## Generic aliases
-source ~/.localaliases  ## Machine dependent aliases
+source ~/.localaliases  ## Machine dependent aliases, that can override .aliases
 
 ## vim mode
 autoload -Uz edit-command-line
