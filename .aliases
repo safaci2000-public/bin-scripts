@@ -29,8 +29,10 @@ export CVSROOT=cvs:/cvs
 export CVS_RSH CVSROOT
 ##java
 #
-alias apta='sudo apt-get update && sudo apt-get dist-upgrade'
-alias ppac='sudo pacman -Syu'  ## am I really this lazy?
+alias aptd='sudo apt-get update && sudo apt-get dist-upgrade'  ##debian
+alias apta='sudo pacman -Syu'  ## am I really this lazy?  ## arch
+alias aptg='sudo emerge --sync && sudo emerge -udN world -av'  ##gentoo
+alias aptr='sudo yum update' ## redhat
 
 export ANT_HOME=/usr/share/ant/
 
