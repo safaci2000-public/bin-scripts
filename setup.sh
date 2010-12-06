@@ -12,7 +12,7 @@ ln -s $HOME/bin/.vimrc
 touch $HOME/.localaliases
 echo "Creating standard dirs"
 mkdir $HOME/projects >& /dev/null
-mkdir $HOME/{seeds,torrents,local,workspace,iso}  >& /dev/null
+mkdir $HOME/{seeds,torrent,local,workspace,iso}  >& /dev/null
 mkdir $HOME/iso/{linux,msft,mac}
 
 echo "Standard coding projects go in $HOME/projects"
