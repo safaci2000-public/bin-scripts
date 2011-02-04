@@ -74,3 +74,19 @@ filetype indent on
 let g:tex_flavor='latex'
 
 set iskeyword+=:
+
+function! Mathematica()
+    nmap <F4> :e /Developer/Alpha/Source<CR>
+    nmap <F5> :e /Developer/Alpha/Source/CalculateFormulas/Engineering/<CR>
+    nmap <F6> :e /Developer/Alpha/Source/CalculateData/SupportFunctions<CR>
+    nmap <F7> :e /Developer/Alpha/Source/CalculateScan/FormulaScanner.m<CR>
+endfunction
+
+function! NoMath()
+    unmap <F4> 
+    unmap <F5>
+    unmap <F6>
+endfunction
+
+
+nmap <F9> :call Mathematica()<CR>
