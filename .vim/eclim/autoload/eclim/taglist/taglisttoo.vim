@@ -30,6 +30,10 @@ if !exists('Tlist_Sort_Type')
   let Tlist_Sort_Type = 'order'
 endif
 
+if !exists('g:EclimTaglistEcho')
+  let g:EclimTaglistEcho = 1
+endif
+
 " }}}
 
 " Script Variables {{{
@@ -486,6 +490,7 @@ endfunction " }}}
 function! s:StartAutocmds()
   augroup taglisttoo_file
     autocmd!
+    autocmd CursorHold,CursorMoved __Tag_List__ call s:EchoTag()
     autocmd BufEnter *
       \ if bufwinnr(g:TagList_title) != -1 |
       \   call s:ProcessTags(0) |
@@ -507,7 +512,8 @@ function! s:StartAutocmds()
       \   let b:ft = &ft |
       \ endif
     autocmd WinLeave *
-      \ if bufwinnr(g:TagList_title) != -1 |
+      \ if bufwinnr(g:TagList_title) != -1 &&
+      \     expand('%') !~ s:taglisttoo_ignore |
       \   let s:taglisttoo_prevwinnr = winnr() |
       \ endif
   augroup END
@@ -735,18 +741,36 @@ function! s:FormatDefault(types, tags)
   return [lines, content]
 endfunction " }}}
 
-" s:JumpToTag() {{{
-function! s:JumpToTag()
+" s:GetTagInfo() {{{
+function! s:GetTagInfo()
   if line('.') > len(b:taglisttoo_content[0])
-    return
+    return []
   endif
 
   let index = b:taglisttoo_content[0][line('.') - 1]
   if index == -1
-    return
+    return []
   endif
 
-  let tag_info = b:taglisttoo_tags[index]
+  return b:taglisttoo_tags[index]
+endfunction " }}}
+
+" s:EchoTag() {{{
+function! s:EchoTag()
+  let tag_info = s:GetTagInfo()
+  if len(tag_info)
+    echo 'tag: ' . tag_info[0]
+  else
+    echo ''
+  endif
+endfunction " }}}
+
+" s:JumpToTag() {{{
+function! s:JumpToTag()
+  let tag_info = s:GetTagInfo()
+  if !len(tag_info)
+    return
+  endif
 
   call s:StopAutocmds()
 
@@ -815,11 +839,18 @@ function! s:Window(types, tags, content)
   let filename = expand('%:t')
   let file_bufnr = bufnr('%')
 
-  let winnum = bufwinnr(g:TagList_title)
-  if winnum != -1
+  let buffers = {}
+  for bufnum in tabpagebuflist()
+    let name = bufname(bufnum)
+    if name != ''
+      let buffers[bufname(bufnum)] = bufnum
+    endif
+  endfor
+  if has_key(buffers, g:TagList_title)
+    let winnum = bufwinnr(buffers[g:TagList_title])
     exe winnum . 'wincmd w'
   else
-    call eclim#display#window#VerticalToolWindowOpen(g:TagList_title, 10)
+    call eclim#display#window#VerticalToolWindowOpen(g:TagList_title, 10, 1)
 
     setlocal filetype=taglist
     setlocal buftype=nofile

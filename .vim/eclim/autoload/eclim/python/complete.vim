@@ -61,15 +61,46 @@ function! eclim#python#complete#CodeComplete(findstart, base)
     let completions = []
     let results = eclim#python#rope#Completions(project, file, offset, encoding)
 
+    let open_paren = getline('.') =~ '\%' . col('.') . 'c\s*('
+    let close_paren = getline('.') =~ '\%' . col('.') . 'c\s*(\s*)'
+
     for result in results
-      let menu = result[1]
+      let word = result[0]
+      let kind = result[1]
       let info = ''
       if result[2] != ''
+        let word .= '('
         let info = result[0] . '(' . result[2] . ')'
         let menu = info
+      else
+        if kind == 'f'
+          let word .= '()'
+        endif
+        let menu = word
       endif
+
+      " map 'a' (attribute) to 'v'
+      if kind == 'a'
+        let kind = 'v'
+
+      " map 'c' (class) to 't'
+      elseif kind == 'c'
+        let kind = 't'
+      endif
+
+      " strip off close paren if necessary.
+      if word =~ ')$' && close_paren
+        let word = strpart(word, 0, strlen(word) - 1)
+      endif
+
+      " strip off open paren if necessary.
+      if word =~ '($' && open_paren
+        let word = strpart(word, 0, strlen(word) - 1)
+      endif
+
       let dict = {
-          \ 'word': result[0],
+          \ 'word': word,
+          \ 'kind': kind,
           \ 'menu': menu,
           \ 'info': info,
         \ }

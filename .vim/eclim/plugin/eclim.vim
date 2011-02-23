@@ -105,14 +105,14 @@ endif
 
 if !exists("g:EclimHome")
   " set at build/install time.
-  let g:EclimHome = '/home/samirf/local/eclipse/plugins/org.eclim_1.5.7'
+  let g:EclimHome = '/home/samirf/.eclipse/org.eclipse.platform_3.6.1_1543616141/plugins/org.eclim_1.6.1'
   if has('win32unix')
     let g:EclimHome = eclim#cygwin#CygwinPath(g:EclimHome)
   endif
 endif
 if !exists("g:EclimEclipseHome")
   " set at build/install time.
-  let g:EclimEclipseHome = '/home/samirf/local/eclipse'
+  let g:EclimEclipseHome = '/home/samirf/.eclipse/org.eclipse.platform_3.6.1_1543616141'
   if has('win32unix')
     let g:EclimEclipseHome = eclim#cygwin#CygwinPath(g:EclimEclipseHome)
   endif

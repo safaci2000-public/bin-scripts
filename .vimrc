@@ -90,3 +90,5 @@ endfunction
 
 
 nmap <F9> :call Mathematica()<CR>
+"JSON Fix.
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>

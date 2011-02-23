@@ -29,6 +29,9 @@
         \ {'pattern': '.*', 'name': 'Edit', 'action': 'edit'},
       \ ]
   endif
+  if !exists('g:EclimProjectTreePathEcho')
+    let g:EclimProjectTreePathEcho = 1
+  endif
 " }}}
 
 " Script Variables {{{
@@ -296,6 +299,21 @@ function! s:InfoLine()
   setlocal nomodifiable
 endfunction " }}}
 
+" s:PathEcho() {{{
+function! s:PathEcho()
+  if mode() != 'n'
+    return
+  endif
+
+  let path = eclim#tree#GetPath()
+  let path = substitute(path, eclim#tree#GetRoot(), '', '')
+  if path !~ '^"'
+    call eclim#util#WideMessage('echo', path)
+  else
+    call eclim#util#WideMessage('echo', '')
+  endif
+endfunction " }}}
+
 " s:OpenFile(action) " {{{
 function! s:OpenFile(action)
   let path = eclim#tree#GetPath()
@@ -330,6 +348,8 @@ function! eclim#project#tree#ProjectTreeSettings()
       \   action.action . "', '<cwd>', '<file>')")
   endfor
 
+  call eclim#tree#RegisterDirAction(function('eclim#project#tree#InjectLinkedResources'))
+
   if exists('s:TreeSettingsFunction')
     let Settings = function(s:TreeSettingsFunction)
     call Settings()
@@ -337,6 +357,9 @@ function! eclim#project#tree#ProjectTreeSettings()
 
   augroup eclim_tree
     autocmd User <buffer> call <SID>InfoLine()
+    if g:EclimProjectTreePathEcho
+      autocmd CursorMoved <buffer> call <SID>PathEcho()
+    endif
   augroup END
 endfunction " }}}
 
@@ -367,6 +390,42 @@ function! eclim#project#tree#OpenProjectFile(cmd, cwd, file)
   catch /E325/
     " ignore attention error since the use should be prompted to handle it.
   endtry
+endfunction " }}}
+
+" InjectLinkedResources(dir, contents) {{{
+function! eclim#project#tree#InjectLinkedResources(dir, contents)
+  let project = eclim#project#util#GetProject(a:dir)
+  if len(project) == 0
+    return
+  endif
+
+  " listing the project root, so inject our project links
+  if len(project.links) && substitute(a:dir, '/$', '', '') == project.path
+    if !exists('b:links')
+      let b:links = {}
+    endif
+    call extend(b:links, project.links)
+
+    let links = keys(project.links)
+    call sort(links)
+
+    let index = 0
+    for entry in copy(a:contents)
+      if !len(links)
+        break
+      endif
+
+      while len(links) && links[0] < fnamemodify(entry, ':h:t')
+        call insert(a:contents, a:dir . remove(links, 0) . '/', index)
+      endwhile
+      let index += 1
+    endfor
+
+    let index += 1
+    for link in links
+      call insert(a:contents, a:dir . link . '/', index)
+    endfor
+  endif
 endfunction " }}}
 
 " HorizontalContentWindow() {{{
