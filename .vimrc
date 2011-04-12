@@ -5,6 +5,8 @@ set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/afte
 
 autocmd BufNewFile * :call LoadFileTemplate()
 autocmd FileType mma :call SetupMathematica()
+
+autocmd FileType java set tags=~/.tags
 "au! BufReadPost,BufWritePost * silent loadview
 "au BufWinLeave * mkview
 
@@ -89,6 +91,6 @@ function! NoMath()
 endfunction
 
 
-nmap <F9> :call Mathematica()<CR>
+nmap <leader>math :call Mathematica()<CR>
 "JSON Fix.
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
