@@ -6,6 +6,7 @@ sleep 10
 rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
 cd $HOME
 ln -s $HOME/bin/.zshrc
+ln -s $HOME/bin/.zsh_functions
 ln -s $HOME/bin/.aliases
 ln -s $HOME/bin/.vim
 ln -s $HOME/bin/.vimrc

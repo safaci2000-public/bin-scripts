@@ -229,7 +229,6 @@ fi
 #export PS1='%n@%m %! %%> '
 # Created by newuser for 4.3.9
 source ~/.aliases
-export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
 
 export EDITOR=/usr/bin/vim
 alias m="/usr/local/bin/rmath /usr/local/bin/math"

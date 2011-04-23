@@ -1,3 +1,12 @@
+autoload -U compinit promptinit compinit
+promptinit
+setopt COMPLETE_IN_WORD
+
+prompt zefram
+autoload -U colors && colors
+export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
+export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! %%> '
+
 bindkey -v  # use vi-style command line editing
 stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
 
@@ -47,52 +56,19 @@ function sshs {
 
 export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
 
-
-set -o vi
-prompt zefram
-autoload -U colors && colors
-export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
-export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! %%> '
+##### Global Aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g BR='>& /dev/null &|'
 
 source ~/.aliases  ## Generic aliases
 source ~/.localaliases  ## Machine dependent aliases, that can override .aliases
+source ~/.zsh_functions
+export PATH=$PATH:$HOME/bin/private
 
 ## vim mode
 autoload -Uz edit-command-line
 zle -N edit-command-line 
 bindkey -M vicmd 'v' edit-command-line
 
-export TARGET=TEST
-export PATH=/Developer/bin:$PATH
-export PATH=$PATH:$HOME/bin/private
-alias -g BR='>& /dev/null &|'
-
-##single path operation, lets me add/restore a single extra path.
-addPath()
-{
-    export OLDPATH=$PATH
-    export PATH=$PATH:$PWD
-}
-
-resPath()
-{
-    export PATH=$OLDPATH
-
-}
-
-## if adding multiple $PATH, save state lets you restore from one past point in history.
-saveState()
-{
-    export PATHSTATE=$PATH
-}
-
-resState()
-{
-    export PATH=$PATHSTATE
-
-} 
-
-cdg()
-{
-    cd $1/$1-git
-}
