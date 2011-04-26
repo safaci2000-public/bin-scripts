@@ -9,3 +9,4 @@ do
     git push $i master:master
     git push --tags $i
 done
+git checkout $SANDBOX
