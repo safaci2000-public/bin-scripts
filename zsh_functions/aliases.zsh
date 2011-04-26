@@ -6,6 +6,8 @@ alias c=clear
 alias techie="ssh user@techieworld.org"
 
 export PATH=~/bin:$PATH
+export PATH=~/bin/git:$PATH  ##adding custom git scripts.
+export PATH=~/bin/git:$PATH  ##adding custom kvm/qemu scripts.
 export PATH=$PATH:/home/user/bin
 
 ##Required for silly Ubuntu behavior.

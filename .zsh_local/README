@@ -1,0 +1,5 @@
+any .zsh files in this directory will be sourced.
+
+Add files here for custom behavior.
+
+TODO: implement a simple mechanism to enable/disable these files.

@@ -54,6 +54,7 @@ function sshs {
 	fi
 }
 
+
 export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
 
 ##### Global Aliases
@@ -62,13 +63,12 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g BR='>& /dev/null &|'
 
-source ~/.aliases  ## Generic aliases
-source ~/.localaliases  ## Machine dependent aliases, that can override .aliases
-source ~/.zsh_functions
+source ~/.zsh_local/*.zsh
 export PATH=$PATH:$HOME/bin/private
 
 ## vim mode
 autoload -Uz edit-command-line
 zle -N edit-command-line 
 bindkey -M vicmd 'v' edit-command-line
+
 

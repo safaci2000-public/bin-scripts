@@ -6,11 +6,11 @@ sleep 10
 rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
 cd $HOME
 ln -s $HOME/bin/.zshrc
-ln -s $HOME/bin/.zsh_functions
-ln -s $HOME/bin/.aliases
 ln -s $HOME/bin/.vim
 ln -s $HOME/bin/.vimrc
-touch $HOME/.localaliases
+ln -s $HOME/bin/.zsh_local
+ln -s $HOME/bin/zsh_functions/generic_functions.zsh  $HOME/bin/.zsh_local/
+ln -s $HOME/bin/zsh_functions/aliases.zsh $HOME/bin/.zsh_local/
 echo "Creating standard dirs"
 mkdir $HOME/projects >& /dev/null
 mkdir $HOME/{seeds,torrent,local,workspace,iso}  >& /dev/null
