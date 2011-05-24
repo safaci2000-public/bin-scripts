@@ -1,9 +1,12 @@
-#!/bin/bash -l
+#!/usr/bin/zsh
 
 APPNAME=$(basename "${0}")
 
 OUTDIR="samir"
 REPO="samir"
+C_USERNAME="samirf"
+alias cvs='cvs -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs'
+
 
 
 usage()
@@ -36,6 +39,8 @@ cd $OUTDIR
 mkdir -p $OUTDIR-cvs
 mkdir -p $OUTDIR-git
 
-cvs checkout   -d $OUTDIR-cvs $REPO
+echo "USER: $C_USERNAME"
+
+cvs checkout  -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs   -d $OUTDIR-cvs $REPO
 echo "git cvsimport -v $REPO"
-cd $OUTDIR-git; git cvsimport -v $REPO
+cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -v $REPO

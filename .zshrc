@@ -63,7 +63,12 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g BR='>& /dev/null &|'
 
-source ~/.zsh_local/*.zsh
+setopt EXTENDED_GLOB
+for file in ~/.zsh_local/*.zsh; do
+      . $file
+  done
+#source ~/.zsh_local/*.zsh
+#source ~/.zsh.d/*.zsh
 export PATH=$PATH:$HOME/bin/private
 
 ## vim mode
@@ -72,3 +77,4 @@ zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 
+alias cvs='cvs -d :ext:samirf@cvs.wolfram.com:/cvs'
