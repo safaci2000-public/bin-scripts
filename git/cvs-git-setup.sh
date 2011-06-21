@@ -42,5 +42,6 @@ mkdir -p $OUTDIR-git
 echo "USER: $C_USERNAME"
 
 cvs checkout  -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs   -d $OUTDIR-cvs $REPO
-echo "git cvsimport -v $REPO"
-cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -v $REPO
+echo "git cvsimport -v -k $REPO"
+cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -r cvs   -v -k $REPO
+#cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -r cvs -o HEAD  -v -k $REPO

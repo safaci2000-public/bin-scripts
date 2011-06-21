@@ -62,4 +62,12 @@ function ff {
 	fi
 }
 
-
+function cdf
+{
+	if [[ -z $1 ]]; then
+		echo 'Usage: cdf PATTERN'
+		echo 'cd into the directory basepath of the given file'
+	else
+        cd $(dirname $1)
+	fi
+}
