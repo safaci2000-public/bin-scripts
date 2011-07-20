@@ -4,7 +4,7 @@ APPNAME=$(basename "${0}")
 
 OUTDIR="samir"
 REPO="samir"
-C_USERNAME="samirf"
+C_USERNAME=$(whoami)
 alias cvs='cvs -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs'
 
 
@@ -43,5 +43,5 @@ echo "USER: $C_USERNAME"
 
 cvs checkout  -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs   -d $OUTDIR-cvs $REPO
 echo "git cvsimport -v -k $REPO"
-cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -r cvs   -v -k $REPO
+cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -r cvs -v  $REPO
 #cd $OUTDIR-git; git cvsimport -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs -r cvs -o HEAD  -v -k $REPO

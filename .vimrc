@@ -84,6 +84,8 @@ function! Mathematica()
     nmap <F7> :e /Developer/Alpha/Source/CalculateScan/FormulaScanner.m<CR>
 endfunction
 
+
+
 function! NoMath()
     unmap <F4> 
     unmap <F5>
@@ -92,5 +94,9 @@ endfunction
 
 
 nmap <leader>math :call Mathematica()<CR>
+cmap sudow w !sudo tee % > /dev/null
+
 "JSON Fix.
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+
