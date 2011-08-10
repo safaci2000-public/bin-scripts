@@ -2,7 +2,7 @@
 echo "This script will replace your zsh, vimrc files with this package's version.  "
 echo "you should have this project checkedout in $HOME/bin, otherwise it'll fail/do something stupid"
 echo "hit Ctrl+C to abort"
-sleep 10
+sleep 5
 rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
 cd $HOME
 ln -s $HOME/bin/.zshrc
@@ -12,9 +12,13 @@ ln -s $HOME/bin/.zsh_local
 ln -s $HOME/bin/zsh_functions/generic_functions.zsh  $HOME/bin/.zsh_local/
 ln -s $HOME/bin/zsh_functions/aliases.zsh $HOME/bin/.zsh_local/
 echo "Creating standard dirs"
-mkdir $HOME/projects >& /dev/null
-mkdir $HOME/{seeds,torrent,local,workspace,iso}  >& /dev/null
-mkdir $HOME/iso/{linux,msft,mac}
+
+
+for i in $HOME/projects $HOME/seeds $HOME/torrent $HOME/local $HOME/workspace $HOME/iso $HOME/iso/linux $HOME/iso/msft $HOME/iso/mac; do 
+   if [ ! -e ${i} ]; then
+        mkdir $i >& /dev/null
+   fi
+done
 
 echo "Standard coding projects go in $HOME/projects"
 echo "eclipse code goes in $HOME/workspace"
