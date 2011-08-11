@@ -2,10 +2,7 @@
 
 APPNAME=$(basename "${0}")
 
-OUTDIR="samir"
-REPO="samir"
 C_USERNAME=$(whoami)
-alias cvs='cvs -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs'
 
 
 
@@ -64,5 +61,8 @@ while getopts 'o:r:u:h' arg; do
     esac
 done
 
-doSanityCheck()
-main()
+doSanityCheck
+
+
+alias cvs='cvs -d :ext:$C_USERNAME@cvs.wolfram.com:/cvs'
+main
