@@ -30,10 +30,6 @@ sanityCheck()
 main()
 {
 
-if [ $# -ne 2 ]; then
-    echo "please user the format $(basename $0) hostname reponame"
-    exit 1;
-fi
 ssh $HOST "cd /var/git/repositories/; mkdir $PROJECT.git; cd $PROJECT.git; git init --bare"
 
 }
