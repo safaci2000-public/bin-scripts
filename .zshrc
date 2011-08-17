@@ -77,4 +77,4 @@ zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 
-alias cvs='cvs -d :ext:samirf@cvs.wolfram.com:/cvs'
+alias cvs="cvs -d :ext:$USER@cvs.wolfram.com:/cvs"
