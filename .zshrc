@@ -76,5 +76,8 @@ autoload -Uz edit-command-line
 zle -N edit-command-line 
 bindkey -M vicmd 'v' edit-command-line
 
-
-alias cvs="cvs -d :ext:$USER@cvs.wolfram.com:/cvs"
+if [[ $USER -eq "user" ]];then
+    alias cvs="cvs -d :ext:samirf@cvs.wolfram.com:/cvs"
+else
+    alias cvs="cvs -d :ext:$USER@cvs.wolfram.com:/cvs"
+fi
