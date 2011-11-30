@@ -98,5 +98,6 @@ cmap sudow w !sudo tee % > /dev/null
 
 "JSON Fix.
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+map <leader>xml  <Esc>:%!xmllint --format %<CR>
 
 
