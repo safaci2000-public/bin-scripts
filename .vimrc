@@ -77,27 +77,34 @@ let g:tex_flavor='latex'
 
 set iskeyword+=:
 
-function! Mathematica()
-    nmap <F4> :e /Developer/Alpha/Source<CR>
-    nmap <F5> :e /Developer/Alpha/Source/CalculateFormulas/Engineering/<CR>
-    nmap <F6> :e /Developer/Alpha/Source/CalculateData/SupportFunctions<CR>
-    nmap <F7> :e /Developer/Alpha/Source/CalculateScan/FormulaScanner.m<CR>
+function! Work()
+    nmap <F4> :e ~/work/BR_NTR_15_APR/app/main/<CR>
+    nmap <F5> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/<CR>
+    nmap <F6> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/ui/cityFinderWidget.js<CR>
+    nmap <F7> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/main.js<CR>
 endfunction
 
 
 
-function! NoMath()
+function! NoWork()
     unmap <F4> 
     unmap <F5>
     unmap <F6>
 endfunction
 
 
-nmap <leader>math :call Mathematica()<CR>
+nmap <leader>work :call Work()<CR>
 cmap sudow w !sudo tee % > /dev/null
+
+
+function! LoadJsonService()
+    1d
+    exec 'r !curl -s http://l-sfaci.corp.nextag.com:8080/int/das//lucene/results/' . shellescape(@")
+    "exec '%!xmllint --format %'
+endfunction
 
 "JSON Fix.
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 map <leader>xml  <Esc>:%!xmllint --format %<CR>
-
-
+"map <leader>nx  <Esc>:r !curl -s  http://l-sfaci.corp.nextag.com:8080/int/das//lucene/results/"<CR>
+map <leader>nx  <Esc>:call LoadJsonService()<CR>
