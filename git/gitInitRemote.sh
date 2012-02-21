@@ -25,12 +25,21 @@ sanityCheck()
         echo "err::  PROJECT is not set"
         usage 1
     fi
+
+    if  test  "${DESCRIPTION:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "warn:  DESCRIPTION is not set"
+        DESCRIPTION="project description is undefined" 
+        usage 1 
+    fi
+
 }
 
 main()
 {
 
-ssh $HOST "cd /var/git/repositories/; mkdir $PROJECT.git; cd $PROJECT.git; git init --bare"
+ssh $HOST "cd /var/git/repositories/; mkdir $PROJECT.git; cd $PROJECT.git; git init --bare; echo $DESCRIPTION > description"
 
 }
 
@@ -38,6 +47,7 @@ while getopts 'H:m:h' arg; do
     case "${arg}" in
         H) HOST="${OPTARG}" ;;
         m) PROJECT="${OPTARG}" ;;
+        d) DESCRIPTION="${OPTARG}" ;;
         h|?) usage 0 ;;
         *) echo "invalid argument '${arg}'"; usage 1 ;;
     esac
