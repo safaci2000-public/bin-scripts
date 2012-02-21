@@ -4,9 +4,11 @@ export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/
 export CATALINA_HOME=/Developer/tomcat
 
 #java
-export JAVA_HOME=/Developer/jdk
+#export JAVA_HOME=/Developer/jdk
+export JAVA_HOME=/usr/lib/jvm/java-6-sun/
 PATH=/Developer/jdk/bin:$PATH
 alias roottunnel="sudo ssh -L 80:localhost:8080 cali"
 
 alias prop='vim /home/sfaci/work/BR_NTR_15_APR/properties/instance.properties' 
 alias work='cd  /home/sfaci/work/BR_NTR_15_APR/app/main'
+alias edit="vim -p www/travel/static/js/ui/cityFinderWidget.js www/travel/static/js/ui/facebook_cookie_lib.js  www/travel/static/js/main.js "
