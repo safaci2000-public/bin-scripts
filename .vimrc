@@ -13,7 +13,7 @@ autocmd FileType java set tags=~/.tags
 
 " Mappings
 map <C-Tab> :tabnext<CR>
-map <C-T> :tabnew<CR>
+"map <C-T> :tabnew<CR>
 map <S-Right> :tabnext<CR>
 map <S-Left> :tabprev<CR>
 nmap <Space> :tabnext<CR>
@@ -108,3 +108,4 @@ map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 map <leader>xml  <Esc>:%!xmllint --format %<CR>
 "map <leader>nx  <Esc>:r !curl -s  http://l-sfaci.corp.nextag.com:8080/int/das//lucene/results/"<CR>
 map <leader>nx  <Esc>:call LoadJsonService()<CR>
+
