@@ -28,9 +28,10 @@ export PATH=$PATH:$HOME/projects/android-sdk-linux_86/tools
 export CVS_RSH=ssh
 export CVSROOT=cvs:/cvs
 export CVS_RSH CVSROOT
+
 ##java
 #
-alias aptd='sudo apt-get update && sudo apt-get dist-upgrade'  ##debian
+#alias aptd='sudo apt-get update && sudo apt-get dist-upgrade'  ##debian
 alias apta='sudo pacman -Syu && sudo rm -frv /var/cache/pacman/pkg/*.{xz,gz}'  ## am I really this lazy?  ## arch
 alias aptg='sudo emerge --sync && sudo emerge -udN world -av'  ##gentoo
 alias aptr='sudo yum update' ## redhat

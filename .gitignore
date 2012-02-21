@@ -2,3 +2,4 @@
 .vim/view
 private
 .zsh_local
+*.pyc
