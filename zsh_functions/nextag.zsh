@@ -10,5 +10,6 @@ PATH=/Developer/jdk/bin:$PATH
 alias roottunnel="sudo ssh -L 80:localhost:8080 cali"
 
 alias prop='vim /home/sfaci/work/BR_NTR_15_APR/properties/instance.properties' 
+alias cdprop='cd  /home/sfaci/work/BR_NTR_15_APR/properties/' 
 alias work='cd  /home/sfaci/work/BR_NTR_15_APR/app/main'
-alias edit="vim -p www/travel/static/js/ui/cityFinderWidget.js www/travel/static/js/ui/facebook_cookie_lib.js  www/travel/static/js/main.js "
+alias edit="vim -p java/com/nextag/travel/component/hotel/catalog/impl/lucene/LegacyLuceneHotelSearchAdapter.java  java/com/nextag/travel/component/hotel/catalog/impl/lucene/LegacyLuceneHotelCatalogComponent.java  java/com/nextag/travel/component/hotel/catalog/impl/lucene/LegacyLuceneHotelQueryFactory.java"

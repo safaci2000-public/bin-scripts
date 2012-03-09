@@ -82,7 +82,10 @@ function! Work()
     nmap <F5> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/<CR>
     nmap <F6> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/ui/cityFinderWidget.js<CR>
     nmap <F7> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/main.js<CR>
+    nmap <F9> :!ctags -R --language-force=java -f~/.tags /Developer/jdksrc/
+    nmap <F10> :!ctags -R --language-force=java -f tags .
 endfunction
+
 
 
 
@@ -108,4 +111,15 @@ map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 map <leader>xml  <Esc>:%!xmllint --format %<CR>
 "map <leader>nx  <Esc>:r !curl -s  http://l-sfaci.corp.nextag.com:8080/int/das//lucene/results/"<CR>
 map <leader>nx  <Esc>:call LoadJsonService()<CR>
+
+
+
+"Omnicomplete
+set ofu=syntaxcomplete#Complete
+
+au FileType java set tags=~/.tags,./tags;
+
+let g:vjde_completion_key='<c-space>' 
+let g:vjde_tab_cfu=1 
+let g:vjde_lib_path="java"
 
