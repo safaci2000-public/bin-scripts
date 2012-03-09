@@ -122,4 +122,4 @@ au FileType java set tags=~/.tags,./tags;
 let g:vjde_completion_key='<c-space>' 
 let g:vjde_tab_cfu=1 
 let g:vjde_lib_path="java"
-
+"call pathogen#infect()
