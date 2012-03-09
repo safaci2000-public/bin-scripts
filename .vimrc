@@ -101,3 +101,5 @@ map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 map <leader>xml  <Esc>:%!xmllint --format %<CR>
 
 
+call pathogen#infect()
+
