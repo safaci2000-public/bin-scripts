@@ -39,3 +39,13 @@ echo "eclipse code goes in $HOME/workspace"
 echo "any $HOME install goes into $HOME/local and binary is symlinked in $HOME/bin/private"
 echo "seeds/torrents are self explantory if used"
 echo "most of my system end up with one or two isos.. which go in the iso folder, optionally sorted by OS"
+
+ 	 
+echo "Installing liberation fonts..."
+mkdir -pv $HOME/.fonts/liberation
+cp fonts/liberation/*.ttf $HOME/.fonts/liberation
+echo "Installing ubuntu fonts..."
+mkdir -pv $HOME/.fonts/ubuntu
+cp fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
+echo "update font cache"
+fc-cache
