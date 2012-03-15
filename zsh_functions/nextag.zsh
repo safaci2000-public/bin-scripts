@@ -1,6 +1,8 @@
 PATH=$PATH:$HOME/local/eclipse/
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:$HOME/bin/work
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
 
