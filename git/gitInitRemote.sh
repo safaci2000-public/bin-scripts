@@ -5,6 +5,7 @@ usage()
     echo "        -H               remote hostname"
     echo "        -m               project name"
     echo "        -h               This message"
+    echo "        -d               Project Description"
     exit $1
 }
 
@@ -34,7 +35,7 @@ ssh $HOST "cd /var/git/repositories/; mkdir $PROJECT.git; cd $PROJECT.git; git i
 
 }
 
-while getopts 'H:m:h' arg; do
+while getopts 'H:m:d:h' arg; do
     case "${arg}" in
         H) HOST="${OPTARG}" ;;
         m) PROJECT="${OPTARG}" ;;
