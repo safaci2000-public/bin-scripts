@@ -8,8 +8,8 @@ export CATALINA_HOME=/Developer/tomcat
 
 #java
 export JAVA_HOME=/Developer/jdk
-#export JAVA_HOME=/usr/lib/jvm/java-6-sun/
-PATH=/Developer/jdk/bin:$PATH
+export JAVA_HOME=/usr/lib/jvm/java-6-sun/
+#PATH=/Developer/jdk/bin:$PATH
 alias roottunnel="sudo ssh -L 80:localhost:8080 cali"
 
 
