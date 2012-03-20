@@ -3,3 +3,4 @@
 private
 .zsh_local
 *.pyc
+.vim/.netrwhist
