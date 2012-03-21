@@ -15,8 +15,6 @@ then
     exit 1
 fi
 
-exit
-
 rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
 cd $HOME
 ln -s $HOME/bin/.zshrc
@@ -43,9 +41,10 @@ echo "most of my system end up with one or two isos.. which go in the iso folder
  	 
 echo "Installing liberation fonts..."
 mkdir -pv $HOME/.fonts/liberation
-cp fonts/liberation/*.ttf $HOME/.fonts/liberation
+pwd
+cp $HOME/bin/fonts/liberation/*.ttf $HOME/.fonts/liberation
 echo "Installing ubuntu fonts..."
 mkdir -pv $HOME/.fonts/ubuntu
-cp fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
+cp $HOME/bin/fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
 echo "update font cache"
 fc-cache
