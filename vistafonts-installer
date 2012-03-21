@@ -50,8 +50,6 @@ cabextract -L -F ppviewer.cab -d "$TMPDIR" "$ARCHIVE"
 
 cabextract -L -F '*.TT[FC]' -d ~/.fonts "$TMPDIR/ppviewer.cab"
 
-( cd ~/.fonts && mv cambria.ttc cambria.ttf && chmod 600 \
-	calibri{,b,i,z}.ttf cambria{,b,i,z}.ttf candara{,b,i,z}.ttf \
-	consola{,b,i,z}.ttf constan{,b,i,z}.ttf corbel{,b,i,z}.ttf )
+( cd ~/.fonts &&  chmod 600 *.ttf )
 
 fc-cache -fv ~/.fonts
