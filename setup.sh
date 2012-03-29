@@ -1,50 +1,112 @@
-#!/bin/bash
+#!/bin/zsh
 #############################################################################
 # Automated installation script
 #  - This script will set up common directories, dot files and other system
 #    settings
 #############################################################################
+PROJECT_DIR="$HOME/bin"   #set this to a different value if project is checked out in a different location then $HOME/bin
+
+function sanityCheck()
+{
+    which cabextract >& /dev/null
+    
+    if [ "$?" -ne 0 ] ; then
+    	echo "missing cabextract, please install it via apt-get install cabextract or yum install cabextract"
+    	exit 1;
+    fi	
+    
+    which curl >& /dev/null
+    
+    if [ "$?" -ne 0 ] ; then
+    	echo "missing curl, please install it via apt-get install curl or yum install curl"
+    	exit 1;
+    fi	
+}
+
+function fetchVistaFonts()
+{
+	(cd $HOME; $PROJECT_DIR/vistafonts-installer )
+	
+}
+
+function install_fonts()
+{
+	
+	mkdir $HOME/.fonts
+	fetchVistaFonts
+    echo "Installing liberation fonts..."
+    mkdir -pv $HOME/.fonts/liberation
+    cp fonts/liberation/*.ttf $HOME/.fonts/liberation
+    echo "Installing ubuntu fonts..."
+    mkdir -pv $HOME/.fonts/ubuntu
+    cp fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
+    echo "update font cache"
+    fc-cache
+	
+	
+}
+
+function clean()
+{
+	
+	rm -friv $HOME/{.zshrc,.aliases,.vim,.vimrc}
+	cd $HOME
+	ln -s $PROJECT_DIR/.zshrc
+	ln -s $PROJECT_DIR/.vim
+	ln -s $PROJECT_DIR/.vimrc
+	ln -s $PROJECT_DIR/.zsh_local
+	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $PROJECT_DIR/.zsh_local/
+}		
+
+function init()
+{
+	clean
+	echo "Creating standard dirs"
+	for i in projects seeds torrent local workspace iso iso/linux iso/msft iso/mac; do 
+    	if [ ! -e ${i} ]; then
+           mkdir $HOME/$i >& /dev/null
+		fi 
+	done
+	
+}
+
+function message()
+{
+	
+     echo "Standard coding projects go in $HOME/projects"
+     echo "eclipse code goes in $HOME/workspace"
+     echo "any $HOME install goes into $HOME/local and binary is symlinked in $HOME/bin/private"
+     echo "seeds/torrents are self explantory if used"
+     echo "most of my system end up with one or two isos.. which go in the iso folder, optionally sorted by OS"
+	
+}
+
 echo "This script will automatically update your system to use common directories, "
 echo "various dotfiles (zsh, vimrc, etc) and other assorted goodies. "
 echo " "
 
 # Ask the user to confirm before proceeding
-read -p "Do you wish to continue? (y|n) "
+echo -n  "Do you wish to continue? (y|n) "
+read REPLY
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     exit 1
 fi
 
-rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
-cd $HOME
-ln -s $HOME/bin/.zshrc
-ln -s $HOME/bin/.vim
-ln -s $HOME/bin/.vimrc
-ln -s $HOME/bin/.zsh_local
-ln -s $HOME/bin/zsh_functions/generic_functions.zsh  $HOME/bin/.zsh_local/
-ln -s $HOME/bin/zsh_functions/aliases.zsh $HOME/bin/.zsh_local/
-echo "Creating standard dirs"
+sanityCheck
+init
 
 
-for i in $HOME/projects $HOME/seeds $HOME/torrent $HOME/local $HOME/workspace $HOME/iso $HOME/iso/linux $HOME/iso/msft $HOME/iso/mac; do 
-   if [ ! -e ${i} ]; then
-        mkdir $i >& /dev/null
-   fi
-done
+echo -n  'Do you wish to install project fonts to $HOME? (y|n) '
+read REPLY
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+	message
+    exit 1
+fi
 
-echo "Standard coding projects go in $HOME/projects"
-echo "eclipse code goes in $HOME/workspace"
-echo "any $HOME install goes into $HOME/local and binary is symlinked in $HOME/bin/private"
-echo "seeds/torrents are self explantory if used"
-echo "most of my system end up with one or two isos.. which go in the iso folder, optionally sorted by OS"
-
+install_fonts
+message
+exit $? 
  	 
-echo "Installing liberation fonts..."
-mkdir -pv $HOME/.fonts/liberation
-pwd
-cp $HOME/bin/fonts/liberation/*.ttf $HOME/.fonts/liberation
-echo "Installing ubuntu fonts..."
-mkdir -pv $HOME/.fonts/ubuntu
-cp $HOME/bin/fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
-echo "update font cache"
-fc-cache
