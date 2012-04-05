@@ -14,32 +14,13 @@ alias roottunnel="sudo ssh -L 80:localhost:8080 cali"
 
 
 
-function setCache()   ## XCache Branch
-{
-    BRANCH='BR_CH_1109'
-    generateAliases
-}
-
 function setDefault()   ##git repo
 {
     BRANCH='nextag_app'
     generateAliases
 }
 
-function setIM()  ## backend branch
-{
-    BRANCH='BR_TR_14_IM_AUG'
-    generateAliases
-}
-
-
-function setClassic()  #Classic Travel
-{
-    BRANCH='BR_TR_15_APR'
-    generateAliases
-}
-
-function setNew()  ## Nextravel branch
+function setNew()  ## example of a different path not used.
 {
     BRANCH='BR_NTR_15_APR'
     generateAliases
