@@ -63,17 +63,30 @@ main()
 
     echo $cmd
 
-    #git filter-branch --commit-filter "
-    #        if [ \"${GIT_COMMITTER_NAME}\" = \"${OEMAIL}\" ];
-    #        then
-    #                GIT_COMMITTER_NAME=\"${NUSER}\";
-    #                GIT_AUTHOR_NAME=\"${NUSER}\";
-    #                GIT_COMMITTER_EMAIL=\"${NEMAIL}\";
-    #                GIT_AUTHOR_EMAIL=\"${NEMAIL}\";
-    #                git commit-tree \"$@\";
-    #        else
-    #                git commit-tree \"$@\";
-    #        fi" HEAD
+    git filter-branch --env-filter "
+        an=\"$GIT_AUTHOR_NAME\"
+        am=\"$GIT_AUTHOR_EMAIL\"
+        cn=\"$GIT_COMMITTER_NAME\"
+        cm=\"$GIT_COMMITTER_EMAIL\"
+    
+   
+    if [ \"$GIT_COMMITTER_EMAIL\" = \"${OEMAIL}\" ]
+    then
+        cn=\"${NUSER}\"
+        cm=\"${NEMAIL}\"
+    fi
+    if [ \"$GIT_AUTHOR_EMAIL\" = \"${OEMAIL}\" ]
+    then
+        an=\"${NUSER}\"
+        am=\"${NEMAIL}\"
+    fi
+    
+    export GIT_AUTHOR_NAME=\"$an\"
+    export GIT_AUTHOR_EMAIL=\"$am\"
+    export GIT_COMMITTER_NAME=\"$cn\"
+    export GIT_COMMITTER_EMAIL=\"$cm\"
+    "
+
 
 }
 
