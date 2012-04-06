@@ -1,0 +1,60 @@
+#!/bin/bash
+usage()
+{
+    echo "usage $0 [options] "
+    echo "        -u               user"
+    echo "        -p               password"
+    echo "        -d               domains comma delimited"
+    echo "        -h               Help "
+    exit $1
+}
+
+
+sanityCheck()
+{
+    if  test  "${RUSER:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "err:: RUSER is not set"
+        usage 1
+    fi
+
+
+    if  test  "${PASS:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "err::  PASS is not set"
+        usage 1
+    fi
+
+    if  test  "${DOMAINS:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "err::  DOMAINS is not set"
+        usage 1
+    fi
+
+
+}
+
+main()
+{
+        for i in $DOMAINS
+	do
+		lynx -source -auth="$RUSER:$PASS" "http://dynamic.zoneedit.com/auth/dynamic.html?host=$i"
+	done
+
+}
+
+while getopts 'u:p:d:h' arg; do
+    case "${arg}" in
+        u) RUSER="${OPTARG}" ;;
+        p) PASS="${OPTARG}" ;;
+        d) DOMAINS="${OPTARG}" ;;
+        h|?) usage 0 ;;
+        *) echo "invalid argument '${arg}'"; usage 1 ;;
+    esac
+done
+
+sanityCheck
+main
