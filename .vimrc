@@ -124,3 +124,6 @@ au FileType java set tags=~/.tags,./tags;
 "let g:vjde_lib_path="java"
 call pathogen#infect()
 
+""Gundo 
+nnoremap <F8> :GundoToggle<CR>
+
