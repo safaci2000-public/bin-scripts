@@ -103,3 +103,6 @@ map <leader>xml  <Esc>:%!xmllint --format %<CR>
 
 call pathogen#infect()
 
+""Gundo 
+nnoremap <F8> :GundoToggle<CR>
+
