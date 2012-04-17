@@ -53,6 +53,12 @@ function! NoWork()
     unmap <F6>
 endfunction
 
+function FixCamel()
+    :%s/\([A-Z]\)/\_\1/g
+	:exe "normal \1Gv<Shift>G$U"
+endfunction
+
+
 
 nmap <leader>work :call Work()<CR>
 cmap sudow w !sudo tee % > /dev/null
@@ -61,6 +67,7 @@ cmap sudow w !sudo tee % > /dev/null
 "JSON Fix.
 map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 map <leader>xml  <Esc>:%!xmllint --format %<CR>
+map <leader>upper :call FixCamel()<CR>
 
 
 
@@ -76,4 +83,3 @@ call pathogen#infect()
 
 ""Gundo 
 nnoremap <F8> :GundoToggle<CR>
-
