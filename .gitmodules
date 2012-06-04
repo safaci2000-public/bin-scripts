@@ -6,7 +6,7 @@
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
 [submodule ".vim/bundle/csgeek"]
 	path = .vim/bundle/csgeek
-	url = git://github.com/safaci2000/csgeek-vimcustomizations.git
+	url = git://github.com/safaci2000-stableProjects/csgeek-vimcustomizations.git
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
