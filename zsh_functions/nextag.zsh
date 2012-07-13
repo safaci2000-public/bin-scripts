@@ -33,15 +33,15 @@ function generateAliases()
 
 function setJava7()
 {
-	export JAVA_HOME=/Developer/jdk1.7.0_03
-	PATH=/Developer/jdk1.7.0_03/bin:$OLDPATH
+	export JAVA_HOME=/Developer/jdk7
+	PATH=/Developer/jdk7/bin:$OLDPATH
 }
 
 function setJava6()
 {
 	#java
-	export JAVA_HOME=/Developer/jdk
-	PATH=/Developer/jdk/bin:$OLDPATH
+	export JAVA_HOME=/Developer/jdk6
+	PATH=/Developer/jdk6/bin:$OLDPATH
 }
 
 
