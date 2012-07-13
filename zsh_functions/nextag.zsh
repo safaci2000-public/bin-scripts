@@ -6,14 +6,6 @@ PATH=$PATH:$HOME/local/RubyMine-4.0.3/bin
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
 
-#java
-export JAVA_HOME=/Developer/jdk
-PATH=/Developer/jdk/bin/:$PATH
-
-#export JAVA_HOME=/usr/lib/jvm/java-6-sun/
-#PATH=/Developer/jdk/bin:$PATH
-
-
 function setDefault()   ##git repo
 {
     BRANCH='nextag_app'
@@ -39,8 +31,25 @@ function generateAliases()
     alias work="cd  $HOME/nextag_work/$BRANCH/nextag/main"
 }
 
+function setJava7()
+{
+	export JAVA_HOME=/Developer/jdk1.7.0_03
+	PATH=/Developer/jdk1.7.0_03/bin:$OLDPATH
+}
+
+function setJava6()
+{
+	#java
+	export JAVA_HOME=/Developer/jdk
+	PATH=/Developer/jdk/bin:$OLDPATH
+}
+
+
+
 
 setDefault
 generateAliases
 JACOBECFG=$HOME/jacob/default.cfg
 PATH=$PATH:$HOME/local/jacob:/sbin:/usr/sbin/
+OLDPATH=$PATH
+setJava6
