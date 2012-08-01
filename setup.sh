@@ -108,5 +108,5 @@ fi
 
 install_fonts
 message
+rm -v $HOME/PowerPointViewer.exe
 exit $? 
- 	 
