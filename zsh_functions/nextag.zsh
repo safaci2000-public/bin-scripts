@@ -29,6 +29,8 @@ function generateAliases()
     alias prop="vim $HOME/nextag_work/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $HOME/nextag_work/$BRANCH/properties/" 
     alias work="cd  $HOME/nextag_work/$BRANCH/nextag/main"
+    alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
+    alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
 }
 
 function setJava7()
@@ -51,3 +53,4 @@ setDefault
 generateAliases
 OLDPATH=$PATH
 setJava6
+
