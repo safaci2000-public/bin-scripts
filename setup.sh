@@ -29,6 +29,12 @@ function fetchVistaFonts()
 	
 }
 
+function doGit() 
+{
+	sed -e "s/NAME/$NAME/" -e "s/EMAIL/$EMAIL/" $HOME/bin/git/gitconfig > $HOME/.gitconfig
+
+}
+
 function install_fonts()
 {
 	
@@ -82,6 +88,7 @@ function message()
 	
 }
 
+
 echo "This script will automatically update your system to use common directories, "
 echo "various dotfiles (zsh, vimrc, etc) and other assorted goodies. "
 echo " "
@@ -104,9 +111,29 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
 	message
     exit 1
+elif
+	install_fonts
+	message
+	rm -v $HOME/PowerPointViewer.exe
 fi
 
-install_fonts
-message
-rm -v $HOME/PowerPointViewer.exe
-exit $? 
+echo -n  'Do you wish git customization into $HOME? (y|n) '
+read REPLY
+
+if [[ $REPLY =~ ^[Nn]$ ]]
+then
+	message
+    exit 1
+else
+	ans="n"
+	while [[ $ans =~ ^[Nn]$ ]] 
+	do	
+		echo -n "Please enter your your full name:  "
+		read NAME
+		echo -n "Please enter your email address: " 
+		read EMAIL
+		echo -n "This information read is: $NAME < $EMAIL >, is this correct? (y|n)? " 
+		read ans
+	done
+	doGit
+fi
