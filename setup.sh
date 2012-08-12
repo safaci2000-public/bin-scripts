@@ -71,6 +71,12 @@ function init()
 	
 }
 
+function fetchGitHubUtils()
+{
+	curl -s http://github.com/github/upload/raw/master/upload.rb > $PROJECT_DIR/git/github_upload
+	chmod a+x $PROJECT_DIR/git/github_upload
+}
+
 function message()
 {
 	
@@ -106,7 +112,10 @@ then
     exit 1
 fi
 
+
+
 install_fonts
+fetchGitHubUtils
 message
 exit $? 
  	 
