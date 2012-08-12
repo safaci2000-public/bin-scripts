@@ -65,7 +65,9 @@ alias -g BR='>& /dev/null &|'
 
 setopt EXTENDED_GLOB
 for file in ~/.zsh_local/*.zsh; do
-      . $file
+	if [[ -e $file ]]; then
+      		. $file
+	fi
   done
 #source ~/.zsh_local/*.zsh
 #source ~/.zsh.d/*.zsh
