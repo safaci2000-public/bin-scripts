@@ -1,7 +1,7 @@
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:$HOME/local/idea-IC-117.418/bin
-PATH=$PATH:$HOME/local/RubyMine-4.0.3/bin
+PATH=$PATH:$HOME/bin/work/
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -49,7 +49,5 @@ function setJava6()
 
 setDefault
 generateAliases
-JACOBECFG=$HOME/jacob/default.cfg
-PATH=$PATH:$HOME/local/jacob:/sbin:/usr/sbin/
 OLDPATH=$PATH
 setJava6

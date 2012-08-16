@@ -1,0 +1,100 @@
+#!/bin/bash
+#
+#author: Samir Faci <samir.faci@wizecommerce.com>
+
+##globals
+CASS_HOME="/cacheDir/xcache/prod/apache-cassandra-1.0.7/"
+
+
+usage()
+{
+    echo "usage $0 [options] "
+    echo "  -a     action ( 'cassar', 'cassah') required parameter"       
+    echo "      cassar:  will retrieve the read latency"
+    echo "      cassah:  will retrieve the Key cache hit rate"
+    echo "  -c     overrides the value of \$CASS_HOME ( $CASS_HOME) "
+    echo "  -h     This message"
+    exit $1
+}
+
+sanityCheck()
+{
+    if  test  "${ACTION:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "err:: ACTION is not set"
+        usage 1
+    fi
+
+    if [ ! -e $CASS_HOME/bin/nodetool ]; then
+        echo "Error, nodetool not found in: $CASS_HOME/bin/nodetool please check your environment and try again"
+        exit 1
+    fi
+
+
+}
+cassar() 
+{
+    cd $CASS_HOME/bin
+    CMD='./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";'
+
+    for i in $(seq 1 8); do 
+        echo "inspecting cass$i"
+        ./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
+    done
+
+    for i in $(seq 1 4); do 
+        echo "inspecting dcass$i"
+        ./nodetool -h dcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
+    done
+
+    for i in $(seq 1 4); do 
+        echo "inspecting sdcass$i"
+        ./nodetool -h sdcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
+
+    done
+}
+
+cassah()
+{
+    cd $CASS_HOME/bin
+    for i in $(seq 1 8); do 
+        echo "inspecting cass$i"
+        ./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
+    done
+
+    for i in $(seq 1 4); do 
+        echo "inspecting dcass$i"
+        ./nodetool -h dcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
+    done
+
+    for i in $(seq 1 4); do 
+        echo "inspecting sdcass$i"
+        ./nodetool -h sdcass$i cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
+    done
+}
+
+main()
+{
+    echo $CASS_HOME
+    if [[ $ACTION == "cassar" ]]; then
+        cassar
+    elif [[ $ACTION == "cassah" ]]; then
+        cassah
+    fi
+
+}
+
+
+
+while getopts 'c:a:h' arg; do
+    case "${arg}" in
+        c) CASS_HOME="${OPTARG}" ;;
+        a) ACTION="${OPTARG}" ;;
+        h|?) usage 0 ;;
+        *) echo "invalid argument '${arg}'"; usage 1 ;;
+    esac
+done
+
+sanityCheck
+main
