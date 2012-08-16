@@ -14,6 +14,7 @@ usage()
     echo "      cassar:  will retrieve the read latency"
     echo "      cassah:  will retrieve the Key cache hit rate"
     echo "  -c     overrides the value of \$CASS_HOME ( $CASS_HOME) "
+    echo "  -d  setdatacenter:  overrides default all datacenter behavior (optional) "
     echo "  -h     This message"
     exit $1
 }
@@ -43,6 +44,13 @@ sanityCheck()
     if [ ! -e $CASS_HOME/bin/nodetool ]; then
         echo "Error, nodetool not found in: $CASS_HOME/bin/nodetool please check your environment and try again"
         exit 1
+    fi
+
+    ##if DATACENTER is set then use that else get a list from nodetool
+    if  test  "${DATACENTER:+1}"; then
+        DC=$DATACENTER
+    else
+        getDC
     fi
 
 
@@ -90,7 +98,6 @@ cassah()
 
 main()
 {
-    getDC #should only be needed once.
     echo $CASS_HOME
     if [[ $ACTION == "cassar" ]]; then
         cassar
@@ -102,11 +109,12 @@ main()
 
 
 
-while getopts 'c:H:a:h' arg; do
+while getopts 'd:c:H:a:h' arg; do
     case "${arg}" in
         H) NODEHOST="${OPTARG}" ;;
         c) CASS_HOME="${OPTARG}" ;;
         a) ACTION="${OPTARG}" ;;
+        d) DATACENTER="${OPTARG}" ;;
         h|?) usage 0 ;;
         *) echo "invalid argument '${arg}'"; usage 1 ;;
     esac
