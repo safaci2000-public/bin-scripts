@@ -9,12 +9,18 @@ CASS_HOME="/cacheDir/xcache/prod/apache-cassandra-1.0.7/"
 usage()
 {
     echo "usage $0 [options] "
+    echo "  -H  hostname:  this should be set to an active cluster node"
     echo "  -a     action ( 'cassar', 'cassah') required parameter"       
     echo "      cassar:  will retrieve the read latency"
     echo "      cassah:  will retrieve the Key cache hit rate"
     echo "  -c     overrides the value of \$CASS_HOME ( $CASS_HOME) "
     echo "  -h     This message"
     exit $1
+}
+
+ipToHost()
+{
+    iphost=$(host $1 | awk '{print $5}')
 }
 
 sanityCheck()
@@ -26,6 +32,14 @@ sanityCheck()
         usage 1
     fi
 
+    if  test  "${NODEHOST:+1}"; then
+        echo "" >> /dev/null
+    else
+        echo "err:: NODEHOST is not set"
+        usage 1
+    fi
+
+
     if [ ! -e $CASS_HOME/bin/nodetool ]; then
         echo "Error, nodetool not found in: $CASS_HOME/bin/nodetool please check your environment and try again"
         exit 1
@@ -33,49 +47,50 @@ sanityCheck()
 
 
 }
+
+getHostPerDC()
+{
+
+    HOSTS=$($CASS_HOME/bin/nodetool -h $NODEHOST ring  | grep $1| grep -v 'Address' | awk '{print $1}' | sort )
+}
+
+getDC()
+{
+    DC=$($CASS_HOME/bin/nodetool -h $NODEHOST ring  |  awk '{print $2}' | sort | uniq | sed -e '/^$/d') 
+
+}
 cassar() 
 {
     cd $CASS_HOME/bin
-    CMD='./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";'
-
-    for i in $(seq 1 8); do 
-        echo "inspecting cass$i"
-        ./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
-    done
-
-    for i in $(seq 1 4); do 
-        echo "inspecting dcass$i"
-        ./nodetool -h dcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
-    done
-
-    for i in $(seq 1 4); do 
-        echo "inspecting sdcass$i"
-        ./nodetool -h sdcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
-
+    cd $CASS_HOME/bin
+    for host in $DC; do
+        getHostPerDC $host #gets a list of all host in datacenter
+        echo "processing DataCenter: $host which includes the following nodes: $HOSTS"
+        for ip in $HOSTS; do
+            ipToHost $ip #returns hostname of ip as $ip 
+            echo "inspecting: $iphost $ip"
+            ./nodetool -h $ip  cfstats | perl -00 -ne "/Tag/ && print"| grep "Read Latency";
+        done
     done
 }
 
 cassah()
 {
     cd $CASS_HOME/bin
-    for i in $(seq 1 8); do 
-        echo "inspecting cass$i"
-        ./nodetool -h cass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
-    done
-
-    for i in $(seq 1 4); do 
-        echo "inspecting dcass$i"
-        ./nodetool -h dcass$i  cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
-    done
-
-    for i in $(seq 1 4); do 
-        echo "inspecting sdcass$i"
-        ./nodetool -h sdcass$i cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
+    for host in $DC; do
+        getHostPerDC $host #gets a list of all host in datacenter
+        echo "processing DataCenter: $host which includes the following nodes: $HOSTS"
+        for ip in $HOSTS; do
+            ipToHost $ip #returns hostname of ip as $ip 
+            echo "inspecting: $iphost $ip"
+            ./nodetool -h $ip  cfstats | perl -00 -ne "/Tag/ && print"| grep "hit";
+        done
     done
 }
 
 main()
 {
+    getDC #should only be needed once.
     echo $CASS_HOME
     if [[ $ACTION == "cassar" ]]; then
         cassar
@@ -87,8 +102,9 @@ main()
 
 
 
-while getopts 'c:a:h' arg; do
+while getopts 'c:H:a:h' arg; do
     case "${arg}" in
+        H) NODEHOST="${OPTARG}" ;;
         c) CASS_HOME="${OPTARG}" ;;
         a) ACTION="${OPTARG}" ;;
         h|?) usage 0 ;;
@@ -98,3 +114,4 @@ done
 
 sanityCheck
 main
+
