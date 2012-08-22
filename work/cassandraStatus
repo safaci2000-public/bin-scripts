@@ -98,7 +98,6 @@ cassah()
 
 main()
 {
-    echo $CASS_HOME
     if [[ $ACTION == "cassar" ]]; then
         cassar
     elif [[ $ACTION == "cassah" ]]; then
