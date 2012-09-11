@@ -13,8 +13,10 @@ usage()
     echo "  -a     action ( 'cassar', 'cassah') required parameter"       
     echo "      cassar:  will retrieve the read latency"
     echo "      cassah:  will retrieve the Key cache hit rate"
+    echo "      dc: will list datacenters                    "
     echo "  -c     overrides the value of \$CASS_HOME ( $CASS_HOME) "
     echo "  -d  setdatacenter:  overrides default all datacenter behavior (optional) "
+    echo "  -l  list datacenters "
     echo "  -h     This message"
     exit $1
 }
@@ -102,6 +104,12 @@ main()
         cassar
     elif [[ $ACTION == "cassah" ]]; then
         cassah
+    elif [[ $ACTION == "dc" ]]; then
+        getDC
+        for host in $DC; do
+            getHostPerDC $host
+            echo $host " : " $HOSTS
+        done
     fi
 
 }
