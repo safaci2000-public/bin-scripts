@@ -29,8 +29,11 @@ function generateAliases()
     alias prop="vim $HOME/nextag_work/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $HOME/nextag_work/$BRANCH/properties/" 
     alias work="cd  $HOME/nextag_work/$BRANCH/nextag/main"
+    alias storm="cd $HOME/nextag_work/cache/storm-import-datastore"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
+    alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
+    alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
 }
 
 function setJava7()
@@ -47,6 +50,7 @@ function setJava6()
 }
 
 
+STORM_HOME=/Developer/storm
 
 
 setDefault
@@ -54,4 +58,6 @@ generateAliases
 PATH=/sbin:$PATH
 OLDPATH=$PATH
 setJava6
+
+PATH=$PATH:/usr/sbin/
 
