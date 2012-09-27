@@ -1,7 +1,8 @@
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:$HOME/local/idea-IC-117.418/bin
-PATH=$PATH:$HOME/bin/work/
+PATH=$PATH:$HOME/bin/bigdata/
+PATH=$PATH:/usr/sbin/
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -58,6 +59,4 @@ generateAliases
 PATH=/sbin:$PATH
 OLDPATH=$PATH
 setJava6
-
-PATH=$PATH:/usr/sbin/
 
