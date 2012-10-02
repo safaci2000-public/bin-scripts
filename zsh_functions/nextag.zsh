@@ -3,6 +3,7 @@ PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:$HOME/local/idea-IC-117.418/bin
 PATH=$PATH:$HOME/bin/bigdata/
 PATH=$PATH:/usr/sbin/
+PATH=$PATH:~/local/sqldeveloper
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -33,6 +34,7 @@ function generateAliases()
     alias storm="cd $HOME/nextag_work/cache/storm-import-datastore"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
+    alias pushcache='git push gerrit HEAD:refs/for/master'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
 }
