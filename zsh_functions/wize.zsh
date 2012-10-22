@@ -1,3 +1,4 @@
+WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:$HOME/local/idea-IC-117.418/bin
@@ -23,15 +24,15 @@ function setPS()  ## example of a different path not used.
 function setCache() 
 {
     BRANCH='cache' 
-    alias work="cd  $HOME/nextag_work/$BRANCH"
+    alias work="cd  $WORK/$BRANCH"
 }
 
 function generateAliases()
 {
-    alias prop="vim $HOME/nextag_work/$BRANCH/properties/instance.properties"
-    alias cdprop="cd  $HOME/nextag_work/$BRANCH/properties/" 
-    alias work="cd  $HOME/nextag_work/$BRANCH/nextag/main"
-    alias storm="cd $HOME/nextag_work/cache/storm-import-datastore"
+    alias prop="vim $WORK/$BRANCH/properties/instance.properties"
+    alias cdprop="cd  $WORK/$BRANCH/properties/" 
+    alias work="cd  $WORK/$BRANCH/nextag/main"
+    alias storm="cd $WORK/cache/storm-import-datastore"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
     alias pushcache='git push gerrit HEAD:refs/for/master'
