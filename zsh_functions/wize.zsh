@@ -2,9 +2,11 @@ WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:$HOME/local/idea-IC-117.418/bin
+PATH=$PATH:$HOME/local/pycharm-2.6.2/bin
 PATH=$PATH:$HOME/bin/bigdata/
 PATH=$PATH:/usr/sbin/
 PATH=$PATH:~/local/sqldeveloper
+PATH=~/local/jmeter/bin:$PATH
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -33,6 +35,7 @@ function generateAliases()
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
     alias storm="cd $WORK/cache/storm-import-datastore"
+    alias cache="cd $WORK/cache/"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
     alias pushcache='git push gerrit HEAD:refs/for/master'
