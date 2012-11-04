@@ -57,6 +57,9 @@ function clean()
 	ln -s $PROJECT_DIR/.zsh_local
 	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $PROJECT_DIR/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/history.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $PROJECT_DIR/.zsh_local/
 }		
 
 function init()
