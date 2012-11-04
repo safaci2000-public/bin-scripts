@@ -55,16 +55,18 @@ function install_fonts()
 
 function clean()
 {
-    
-    rm -frv $HOME/{.zshrc,.aliases,.vim,.vimrc}
-    cd $HOME
-    ln -s $PROJECT_DIR/.zshrc
-    ln -s $PROJECT_DIR/.vim
-    ln -s $PROJECT_DIR/.vimrc
-    ln -s $PROJECT_DIR/.zsh_local
-    ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $PROJECT_DIR/.zsh_local/
-    ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $PROJECT_DIR/.zsh_local/
-}        
+	rm -friv $HOME/{.zshrc,.aliases,.vim,.vimrc}
+	cd $HOME
+	ln -s $PROJECT_DIR/.zshrc
+	ln -s $PROJECT_DIR/.vim
+	ln -s $PROJECT_DIR/.vimrc
+	ln -s $PROJECT_DIR/.zsh_local
+	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/history.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $PROJECT_DIR/.zsh_local/
+}		
 
 function init()
 {
