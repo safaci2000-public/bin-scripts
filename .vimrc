@@ -35,32 +35,11 @@ let g:tex_flavor='latex'
 
 set iskeyword+=:
 
-function! Work()
-    nmap <F4> :e ~/work/BR_NTR_15_APR/app/main/<CR>
-    nmap <F5> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/<CR>
-    nmap <F6> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/ui/cityFinderWidget.js<CR>
-    nmap <F7> :e ~/work/BR_NTR_15_APR/app/main/www/travel/static/js/main.js<CR>
-    nmap <F9> :!ctags -R --language-force=java -f~/.tags /Developer/jdksrc/
-    nmap <F10> :!ctags -R --language-force=java -f tags .
-endfunction
-
-
-
-
-function! NoWork()
-    unmap <F4> 
-    unmap <F5>
-    unmap <F6>
-endfunction
-
 function FixCamel()
     :%s/\([A-Z]\)/\_\1/g
 	:exe "normal \1Gv<Shift>G$U"
 endfunction
 
-
-
-nmap <leader>work :call Work()<CR>
 cmap sudow w !sudo tee % > /dev/null
 
 

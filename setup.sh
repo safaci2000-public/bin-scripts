@@ -55,11 +55,11 @@ function clean()
 	ln -s $PROJECT_DIR/.vim
 	ln -s $PROJECT_DIR/.vimrc
 	ln -s $PROJECT_DIR/.zsh_local
-	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $PROJECT_DIR/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $PROJECT_DIR/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/history.zsh $PROJECT_DIR/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $PROJECT_DIR/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $PROJECT_DIR/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/history.zsh $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $HOME/.zsh_local/
 }		
 
 function init()
