@@ -39,6 +39,8 @@ function generateAliases()
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
     alias pushcache='git push gerrit HEAD:refs/for/master'
+    alias rebaseps='git rebase origin/BR_PS_1109'
+    alias rebasech='git rebase origin/BR_CH_1109'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
 }
