@@ -7,7 +7,7 @@ alias techie="ssh user@techieworld.org"
 
 export PATH=~/bin:$PATH
 export PATH=~/bin/git:$PATH  ##adding custom git scripts.
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin/utils
 export PATH=$PATH:$HOME/bin/bigdata  ##Adding path for big data scripts
 
 ##Required for silly Ubuntu behavior.
