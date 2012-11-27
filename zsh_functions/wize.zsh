@@ -66,5 +66,5 @@ setDefault
 generateAliases
 PATH=/sbin:$PATH
 OLDPATH=$PATH
-setJava6
+setJava7
 
