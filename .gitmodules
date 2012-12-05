@@ -1,18 +1,6 @@
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-latex"]
-	path = .vim/bundle/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
-[submodule ".vim/bundle/csgeek"]
-	path = .vim/bundle/csgeek
-	url = git://github.com/safaci2000-stableProjects/csgeek-vimcustomizations.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
-[submodule ".vim/bundle/vim-gundo"]
-	path = .vim/bundle/vim-gundo
-	url = git://github.com/sjl/gundo.vim.git
 [submodule "gitutils"]
 	path = gitutils
 	url = git://github.com/chaitanyagupta/gitutils.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
