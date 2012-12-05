@@ -1,39 +1,32 @@
-filetype plugin indent on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set nocompatible               " be iMproved
+filetype off                   " required!
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-autocmd FileType java set tags=~/.tags
-"au! BufReadPost,BufWritePost * silent loadview
-"au BufWinLeave * mkview
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+
+" original repos on github
+Bundle 'safaci2000-stableProjects/csgeek-vimcustomizations'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+""non github
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+
+filetype plugin indent on     " required!
 
 
 syntax on
 set guifont=Consolas\ 11
 colors fruity
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-set iskeyword+=:
 
 function FixCamel()
     :%s/\([A-Z]\)/\_\1/g
@@ -55,10 +48,5 @@ set ofu=syntaxcomplete#Complete
 
 au FileType java set tags=~/.tags,./tags;
 
-"let g:vjde_completion_key='<c-space>' 
-"let g:vjde_tab_cfu=1 
-"let g:vjde_lib_path="java"
-call pathogen#infect()
-
-""Gundo 
+"Gundo 
 nnoremap <F8> :GundoToggle<CR>
