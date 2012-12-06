@@ -1,7 +1,7 @@
 WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
-PATH=$PATH:$HOME/local/idea-IC-117.418/bin
+PATH=$PATH:$HOME/local/idea/bin
 PATH=$PATH:$HOME/local/pycharm-2.6.2/bin
 PATH=$PATH:$HOME/bin/bigdata/
 PATH=$PATH:/usr/sbin/
