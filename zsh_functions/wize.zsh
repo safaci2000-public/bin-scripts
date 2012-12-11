@@ -29,6 +29,11 @@ function setCache()
     alias work="cd  $WORK/$BRANCH"
 }
 
+function pushbranch() 
+{
+    git push origin --force $(git branch 2>/dev/null  | grep "*" | sed -e 's/* //') 
+}
+
 function generateAliases()
 {
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
