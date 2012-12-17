@@ -33,6 +33,8 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
+  sup = submodules update --init
+  sub = submodules
 
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
