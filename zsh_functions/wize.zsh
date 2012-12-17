@@ -1,3 +1,4 @@
+PATH=$PATH:$HOME/bin/work/
 WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
