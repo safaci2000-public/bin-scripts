@@ -35,6 +35,7 @@
   ls = ls-files
   sup = submodules update --init
   sub = submodules
+  lsfiles=show --pretty="format:" --name-only
 
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
