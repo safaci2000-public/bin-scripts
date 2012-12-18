@@ -42,6 +42,7 @@ function generateAliases()
     alias work="cd  $WORK/$BRANCH/nextag/main"
     alias storm="cd $WORK/cache/storm-import-datastore"
     alias cache="cd $WORK/cache/"
+    alias sp="cd $WORK/seller-program/"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
     alias pushcache='git push gerrit HEAD:refs/for/master'
