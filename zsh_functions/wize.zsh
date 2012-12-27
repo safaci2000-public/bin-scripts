@@ -8,6 +8,8 @@ PATH=$PATH:$HOME/bin/bigdata/
 PATH=$PATH:/usr/sbin/
 PATH=$PATH:~/local/sqldeveloper
 PATH=~/local/jmeter/bin:$PATH
+#adding platform-utils runnable dirs to search path.
+PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -40,14 +42,15 @@ function generateAliases()
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
-    alias storm="cd $WORK/cache/storm-import-datastore"
+    alias storm="cd $WORK/cache-import/"
     alias cache="cd $WORK/cache/"
     alias sp="cd $WORK/seller-program/"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
-    alias pushcache='git push gerrit HEAD:refs/for/master'
+    alias pushmaster='git push gerrit HEAD:refs/for/master'
     alias rebaseps='git rebase origin/BR_PS_1109'
     alias rebasech='git rebase origin/BR_CH_1109'
+    alias rebasem='git rebase origin/master'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
 }
