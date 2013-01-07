@@ -9,7 +9,8 @@ PATH=$PATH:/usr/sbin/
 PATH=$PATH:~/local/sqldeveloper
 PATH=~/local/jmeter/bin:$PATH
 #adding platform-utils runnable dirs to search path.
-PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils
+PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils:$HOME/platform-utils/cassandra/
+source $HOME/platform-utils/cassandra/bigdata_bash
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -29,7 +30,7 @@ function setPS()  ## example of a different path not used.
 function setCache() 
 {
     BRANCH='cache' 
-    alias work="cd  $WORK/$BRANCH"
+    alias legacy="cd  $WORK/$BRANCH"
 }
 
 function pushbranch() 
