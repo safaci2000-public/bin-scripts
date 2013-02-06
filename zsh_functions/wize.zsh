@@ -46,12 +46,13 @@ function generateAliases()
     alias storm="cd $WORK/cache-import/"
     alias cache="cd $WORK/cache/"
     alias sp="cd $WORK/seller-program/"
+    alias seller="cd $WORK/seller/"
     alias pushch='git push gerrit HEAD:refs/for/BR_CH_1109'
     alias pushps='git push gerrit HEAD:refs/for/BR_PS_1109'
     alias pushmaster='git push gerrit HEAD:refs/for/master'
-    alias rebaseps='git rebase origin/BR_PS_1109'
-    alias rebasech='git rebase origin/BR_CH_1109'
-    alias rebasem='git rebase origin/master'
+    alias rebaseps='git rebase -i origin/BR_PS_1109'
+    alias rebasech='git rebase -i origin/BR_CH_1109'
+    alias rebasem='git rebase -i origin/master'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
 }
