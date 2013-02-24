@@ -34,6 +34,11 @@ function setCache()
     alias legacy="cd  $WORK/$BRANCH"
 }
 
+function pushheroku() 
+{
+    git push heroku --force $(git branch 2>/dev/null  | grep "*" | sed -e 's/* //') 
+}
+
 function pushbranch() 
 {
     git push origin --force $(git branch 2>/dev/null  | grep "*" | sed -e 's/* //') 
