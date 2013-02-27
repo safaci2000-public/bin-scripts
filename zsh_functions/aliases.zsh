@@ -4,6 +4,8 @@ alias ll='ls -lh'
 alias la='ls -la'
 alias c=clear
 alias techie="ssh user@techieworld.org"
+alias sl='sl -e' ## if for some god awful reason you were dumb enough to install this program on your computer, and that
+                 ## action naturally made perfect sense at the time.  This allows you to break this annoying program via Ctrl+C
 
 export PATH=~/bin:$PATH
 export PATH=~/bin/git:$PATH  ##adding custom git scripts.

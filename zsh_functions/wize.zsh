@@ -38,6 +38,8 @@ function pushbranch()
     git push origin --force $(git branch 2>/dev/null  | grep "*" | sed -e 's/* //') 
 }
 
+
+
 function generateAliases()
 {
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
@@ -55,6 +57,7 @@ function generateAliases()
     alias rebasem='git rebase -i origin/master'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
+    alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
 }
 
 function setJava7()
