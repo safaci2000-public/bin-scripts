@@ -2,6 +2,7 @@ PATH=$PATH:$HOME/bin/work/
 WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
 PATH=$PATH:/Developer/cassandra/bin/
+PATH=$PATH:/Developer/zookeeper-3.4.5/bin/
 PATH=$PATH:$HOME/local/idea/bin
 PATH=$PATH:$HOME/local/pycharm-2.6.2/bin
 PATH=$PATH:$HOME/bin/bigdata/
@@ -58,6 +59,8 @@ function generateAliases()
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
+    alias py='cd ~/wize_work/definitions'
+    alias pywork='cd ~/wize_work/definitions/work/ruby'
 }
 
 function setJava7()
@@ -82,4 +85,7 @@ generateAliases
 PATH=/sbin:$PATH
 OLDPATH=$PATH
 setJava7
+
+
+
 
