@@ -17,6 +17,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'terryma/vim-multiple-cursors'
 ""non github
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 
@@ -28,7 +29,7 @@ set guifont=Consolas\ 11
 colors fruity
 
 
-function FixCamel()
+function! FixCamel()
     :%s/\([A-Z]\)/\_\1/g
 	:exe "normal \1Gv<Shift>G$U"
 endfunction
