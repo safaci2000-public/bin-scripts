@@ -8,7 +8,10 @@ PATH=$PATH:$HOME/local/pycharm-2.6.2/bin
 PATH=$PATH:$HOME/bin/bigdata/
 PATH=$PATH:/usr/sbin/
 PATH=$PATH:~/local/sqldeveloper
-PATH=~/local/jmeter/bin:$PATH
+PATH=$PATH:~/local/jmeter/bin:$PATH
+PATH=$PATH:$HOME/local/sublime/
+PATH=$PATH:$HOME/platform-utils/storm/
+PATH=$PATH:/Developer/storm/bin
 #adding platform-utils runnable dirs to search path.
 PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils:$HOME/platform-utils/cassandra/
 source $HOME/platform-utils/cassandra/bigdata_bash
@@ -51,7 +54,7 @@ function generateAliases()
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
-    alias storm="cd $WORK/cache-import/"
+    alias scrub="cd $WORK/cache-import/"
     alias cache="cd $WORK/cache/"
     alias sp="cd $WORK/seller-program/"
     alias seller="cd $WORK/seller/"

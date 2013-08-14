@@ -18,8 +18,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 ""non github
-Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+"Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+"" vim-scripts
 
 filetype plugin indent on     " required!
 
