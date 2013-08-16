@@ -66,6 +66,7 @@ function generateAliases()
     alias rebasem='git rebase -i origin/master'
     alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
+    alias prodcasseu='cassandra-cli -h cass37.pv.sv.nextag.com'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
     alias py='cd ~/wize_work/definitions'
     alias pywork='cd ~/wize_work/definitions/work/ruby'
