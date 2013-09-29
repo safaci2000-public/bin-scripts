@@ -72,6 +72,11 @@ function generateAliases()
     alias pywork='cd ~/wize_work/definitions/work/ruby'
 }
 
+function setJava8() 
+{
+	export JAVA_HOME=/Developer/jdk8
+	PATH=/Developer/jdk8/bin:$OLDPATH
+}
 function setJava7()
 {
 	export JAVA_HOME=/Developer/jdk7
