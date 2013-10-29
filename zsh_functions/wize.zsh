@@ -1,7 +1,6 @@
 PATH=$PATH:$HOME/bin/work/
 WORK=$HOME/wize_work
 PATH=$PATH:/Developer/maven3/bin
-PATH=$PATH:/Developer/cassandra/bin/
 PATH=$PATH:/Developer/zookeeper-3.4.5/bin/
 PATH=$PATH:$HOME/local/idea/bin
 PATH=$PATH:$HOME/local/pycharm-2.6.2/bin
@@ -15,6 +14,19 @@ PATH=$PATH:/Developer/storm/bin
 #adding platform-utils runnable dirs to search path.
 PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils:$HOME/platform-utils/cassandra/
 source $HOME/platform-utils/cassandra/bigdata_bash
+
+
+
+function setCass2() 
+{
+    PATH=/Developer/apache-cassandra-2.0.0/bin/:$OLDPATH
+}
+
+function setCassOld()
+{
+    PATH=/Developer/apache-cassandra-1.0.7/bin/:$OLDPATH
+}
+
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib/jni/ 
 export CATALINA_HOME=/Developer/tomcat
@@ -99,7 +111,7 @@ generateAliases
 PATH=/sbin:$PATH
 OLDPATH=$PATH
 setJava7
-
+setCassOld
 
 
 

@@ -15,13 +15,28 @@ Bundle 'gmarik/vundle'
 Bundle 'safaci2000-stableProjects/csgeek-vimcustomizations'
 Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-rails'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'terryma/vim-multiple-cursors'
+Bundle 'mbbill/undotree'
+"Bundle 'terryma/vim-multiple-cursors'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'reinh/vim-makegreen'
+"Bundle 'sontek/minibufexpl.vim.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'tpope/vim-surround'
+Bundle 'Townk/vim-autoclose'
+Bundle 'bling/vim-airline' 
+" colors
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'spf13/vim-colors'
+"Syntax Checking
+Bundle 'scrooloose/syntastic'
 ""non github
 "Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 "" vim-scripts
+Bundle 'msanders/snipmate.vim'
 
 filetype plugin indent on     " required!
 
