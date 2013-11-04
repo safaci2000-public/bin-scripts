@@ -40,6 +40,8 @@ function install_fonts()
     echo "Installing ubuntu fonts..."
     mkdir -pv $HOME/.fonts/ubuntu
     cp fonts/ubuntu/*.ttf $HOME/.fonts/ubuntu
+    echo "copying powerline fonts"
+    find fonts/powerline/ -type f \( -iname '*.otf' -o -iname '*.ttf' \)   -exec cp -v {} $HOME/.fonts  \; 
     echo "update font cache"
     fc-cache
 	
@@ -118,7 +120,7 @@ fi
 
 
 install_fonts
-fetchGitHubUtils
-message
+#fetchGitHubUtils
+#message
 exit $? 
  	 
