@@ -1,5 +1,7 @@
 set nocompatible               " be iMproved
-filetype on                  " required!
+filetype on                    " required!
+
+au! BufNewFile,BufRead *.thrift set filetype=thrift
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -32,6 +34,8 @@ Bundle 'Townk/vim-autoclose'
 "code Comments
 Bundle 'The-NERD-Commenter'
 Bundle 'ervandew/supertab'
+" vim environment
+Bundle 'bling/vim-airline'
 " colors
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spf13/vim-colors'

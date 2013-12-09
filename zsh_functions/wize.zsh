@@ -66,7 +66,7 @@ function generateAliases()
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
-    alias scrub="cd $WORK/cache-import/"
+    alias scrub="cd $WORK/apps/cache-import/"
     alias cache="cd $WORK/cache/"
     alias sp="cd $WORK/seller-program/"
     alias seller="cd $WORK/seller/"
@@ -104,6 +104,19 @@ function setJava6()
 
 
 STORM_HOME=/Developer/storm
+
+alias cdthrift='cd ~/wize_work/definitions'
+
+function pushServiceConfig 
+{
+	(cd ~/wize_work/shared/configuration; java -jar target/*shaded.jar  --action UploadFolder services -zkUrls localhost:2181 )
+
+}
+
+function pushStormConfig 
+{
+	(cd ~/wize_work/shared/configuration; java -jar target/*shaded.jar  --action UploadFolder storm  -t Storm -zkUrls localhost:2181 )
+}
 
 
 setDefault
