@@ -5,4 +5,4 @@ zle -N insert-sudo      insert_sudo
 zle -N insert-apt       insert_apt
 
 bindkey "^k" insert-sudo
-bindkey "^a" insert-apt
+bindkey "^b" insert-apt

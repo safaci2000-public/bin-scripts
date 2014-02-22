@@ -81,7 +81,12 @@ function generateAliases()
     alias prodcasseu='cassandra-cli -h cass37.pv.sv.nextag.com'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
     alias py='cd ~/wize_work/definitions'
-    alias pywork='cd ~/wize_work/definitions/work/ruby'
+    alias pywork='cd ~/wize_work/thrift/definitions/work/ruby'
+    alias config='cd ~/wize_work/shared/configuration'
+    alias define='cd ~/wize_work/thrift/definitions'
+    alias common='cd ~/wize_work/shared/common-utils'
+    alias trigger='cd ~/wize_work/shared/aqutilities/python'
+    alias seller='cd ~/wize_work/services/seller'
 }
 
 function setJava8() 
