@@ -16,10 +16,14 @@ PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils:$HOME/pl
 source $HOME/platform-utils/cassandra/bigdata_bash
 
 
+function setCass1() 
+{
+    PATH=/Developer/apache-cassandra-1.1.12/bin/:$OLDPATH
+}
 
 function setCass2() 
 {
-    PATH=/Developer/apache-cassandra-2.0.0/bin/:$OLDPATH
+    PATH=/Developer/apache-cassandra-2.0.6/bin/:$OLDPATH
 }
 
 function setCassOld()
@@ -67,6 +71,7 @@ function generateAliases()
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
     alias scrub="cd $WORK/apps/cache-import/"
+    alias core="cd $WORK/shared/cache-import-core/"
     alias cache="cd $WORK/cache/"
     alias sp="cd $WORK/seller-program/"
     alias seller="cd $WORK/seller/"
@@ -108,10 +113,6 @@ function setJava6()
 }
 
 
-STORM_HOME=/Developer/storm
-
-alias cdthrift='cd ~/wize_work/definitions'
-
 function pushServiceConfig 
 {
 	(cd ~/wize_work/shared/configuration; java -jar target/*shaded.jar  --action UploadFolder services -zkUrls localhost:2181 )
@@ -123,13 +124,12 @@ function pushStormConfig
 	(cd ~/wize_work/shared/configuration; java -jar target/*shaded.jar  --action UploadFolder storm  -t Storm -zkUrls localhost:2181 )
 }
 
+STORM_HOME=/Developer/storm
+alias cdthrift='cd ~/wize_work/definitions'
 
+OLDPATH=$PATH
 setDefault
 generateAliases
 PATH=/sbin:$PATH
-OLDPATH=$PATH
 setJava7
-setCassOld
-
-
-
+setCass2
