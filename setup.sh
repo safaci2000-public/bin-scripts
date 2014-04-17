@@ -29,6 +29,15 @@ function fetchVistaFonts()
 	
 }
 
+function doGit() 
+{
+    echo "installing gitconfig"
+    sed -e "s/NAME/$NAME/" -e "s/EMAIL/$EMAIL/" $PROJECT_DIR/git/gitconfig > $HOME/.gitconfig
+
+}
+
+
+
 function install_fonts()
 {
 	
@@ -62,6 +71,9 @@ function clean()
 	ln -s $PROJECT_DIR/zsh_functions/history.zsh $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/gitstatus.py $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/zshrc.sh $HOME/.zsh_local/
+	
 }		
 
 function init()
@@ -93,6 +105,7 @@ function message()
 	
 }
 
+
 echo "This script will automatically update your system to use common directories, "
 echo "various dotfiles (zsh, vimrc, etc) and other assorted goodies. "
 echo " "
@@ -100,7 +113,7 @@ echo " "
 # Ask the user to confirm before proceeding
 echo -n  "Do you wish to continue? (y|n) "
 read REPLY
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[  $REPLY =~ ^[Nn]$ ]]
 then
     exit 1
 fi
@@ -113,14 +126,25 @@ echo -n  'Do you wish to install project fonts to $HOME? (y|n) '
 read REPLY
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-	message
-    exit 1
+    install_fonts
+    message
+    rm -v $HOME/PowerPointViewer.exe
 fi
 
+echo -n  'Do you wish to install git customizations into $HOME? (y|n) '
+read REPLY
 
-
-install_fonts
-#fetchGitHubUtils
-#message
-exit $? 
- 	 
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    ans="n"
+    while [[ $ans =~ ^[Nn]$ ]] 
+    do    
+        echo -n "Please enter your your full name:  "
+        read NAME
+        echo -n "Please enter your email address: " 
+        read EMAIL
+        echo -n "This information read is: $NAME < $EMAIL >, is this correct? (y|n)? " 
+        read ans
+    done
+    doGit
+fi

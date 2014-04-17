@@ -5,7 +5,7 @@ setopt COMPLETE_IN_WORD
 prompt zefram
 autoload -U colors && colors
 export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
-export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! %%> '
+export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! $(git_super_status) %%> '
 
 bindkey -v  # use vi-style command line editing
 stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
@@ -85,3 +85,6 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source $HOME/.zsh_local/zshrc.sh
+# an example prompt

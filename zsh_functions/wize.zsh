@@ -81,7 +81,8 @@ function generateAliases()
     alias rebaseps='git rebase -i origin/BR_PS_1109'
     alias rebasech='git rebase -i origin/BR_CH_1109'
     alias rebasem='git rebase -i origin/master'
-    alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com'
+    alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com -p 9180'
+    alias qacass3='cqlsh casst1.pv.sv.nextag.com 9180'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
     alias prodcasseu='cassandra-cli -h cass37.pv.sv.nextag.com'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
