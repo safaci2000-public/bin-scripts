@@ -11,6 +11,7 @@ PATH=$PATH:~/local/jmeter/bin:$PATH
 PATH=$PATH:$HOME/local/sublime/
 PATH=$PATH:$HOME/platform-utils/storm/
 PATH=$PATH:/Developer/storm/bin
+PATH=$PATH:/Developer/gradle/bin/
 #adding platform-utils runnable dirs to search path.
 PATH=$PATH:$HOME/platform-utils/cassandra:$HOME/platform-utils/gitutils:$HOME/platform-utils/cassandra/
 source $HOME/platform-utils/cassandra/bigdata_bash
@@ -70,6 +71,7 @@ function generateAliases()
     alias prop="vim $WORK/$BRANCH/properties/instance.properties"
     alias cdprop="cd  $WORK/$BRANCH/properties/" 
     alias work="cd  $WORK/$BRANCH/nextag/main"
+    alias workch="cd  $WORK/scrubber/main"
     alias scrub="cd $WORK/apps/cache-import/"
     alias core="cd $WORK/shared/cache-import-core/"
     alias cache="cd $WORK/cache/"
@@ -81,8 +83,8 @@ function generateAliases()
     alias rebaseps='git rebase -i origin/BR_PS_1109'
     alias rebasech='git rebase -i origin/BR_CH_1109'
     alias rebasem='git rebase -i origin/master'
-    alias qacass='cassandra-cli -h casst1.pv.sv.nextag.com -p 9180'
-    alias qacass3='cqlsh casst1.pv.sv.nextag.com 9180'
+    alias qacass='cassandra-cli -h v-casst.nextagqa.com -p 9160'
+    alias qacass3='cqlsh v-cass1.nextagqa.com 9160'
     alias prodcass='cassandra-cli -h cass29.pv.sv.nextag.com'
     alias prodcasseu='cassandra-cli -h cass37.pv.sv.nextag.com'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
@@ -132,5 +134,5 @@ OLDPATH=$PATH
 setDefault
 generateAliases
 PATH=/sbin:$PATH
-setJava7
+setJava8
 setCass2
