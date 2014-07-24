@@ -1,5 +1,5 @@
 set -o vi 
-alias ls='ls --color'
+alias ls='ls -G'
 alias ll='ls -lh'
 alias la='ls -la'
 alias c=clear

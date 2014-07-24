@@ -59,7 +59,6 @@ function install_fonts()
 
 function clean()
 {
-	
 	rm -friv $HOME/{.zshrc,.aliases,.vim,.vimrc}
 	cd $HOME
 	ln -s $PROJECT_DIR/.zshrc
@@ -73,7 +72,7 @@ function clean()
 	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/gitstatus.py $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/zshrc.sh $HOME/.zsh_local/
-	
+    ln -s $PROJECT_DIR/zsh_functions/smule.zsh $PROJECT_DIR/.zsh_local/
 }		
 
 function init()
