@@ -19,7 +19,7 @@ function generateAliases()
     alias work='cd ~/dev/git/snp'
     alias cdplay='cd ~/dev/git/snp/play'
     alias smysql='sudo /Library/StartupItems/MySQLCOM/MySQLCOM restart'
-    alias pushmaster='git push gerrit HEAD:refs/for/master'
+    alias pushmaster='git push origin master:master'
     alias rebasem='git rebase -i origin/master'
     alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
 
@@ -31,3 +31,5 @@ function pushbranch()
 }
 
 generateAliases
+LDFLAGS="-L/usr/local/opt/openssl/lib"
+CPPFLAGS="-I/usr/local/opt/openssl/include"

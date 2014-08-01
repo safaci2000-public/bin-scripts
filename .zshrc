@@ -84,7 +84,7 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 source $HOME/.zsh_local/zshrc.sh
 # an example prompt
+
+[ -s "/Users/sfaci/.nvm/nvm.sh" ] && . "/Users/sfaci/.nvm/nvm.sh" # This loads nvm
