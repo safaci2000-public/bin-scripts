@@ -1,1 +1,1 @@
-alias venv='source /home/sfaci/projects/python/env/bin/activate'
+alias venv='source $HOME/projects/python/env/bin/activate'

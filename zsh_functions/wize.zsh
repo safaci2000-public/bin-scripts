@@ -134,5 +134,5 @@ OLDPATH=$PATH
 setDefault
 generateAliases
 PATH=/sbin:$PATH
-setJava8
+setJava7
 setCass2
