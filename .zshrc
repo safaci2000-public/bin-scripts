@@ -1,61 +1,77 @@
-autoload -U compinit promptinit compinit
-promptinit
-setopt COMPLETE_IN_WORD
+# To install source this file from your .zshrc file
+source $HOME/bin/zsh_antigen/antigen.zsh
 
-prompt zefram
-autoload -U colors && colors
-export RPROMPT="%{$fg[red]%}%m:%{$fg[green]%}%~ %{$reset_color%}%"
-export PS1='%n %{$fg[yellow]%}%D{%H:%M.%S} %{$reset_color%}% %! $(git_super_status) %%> '
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+#
+## For SSH, starting ssh-agent is annoying
+antigen bundle ssh-agent
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle aws
+antigen bundle bower 
+antigen bundle command-not-found
+antigen bundle docker
+antigen bundle git
+antigen bundle git-extras
+#antigen bundle github
+#antigen bundle gradle 
+antigen bundle heroku
+#antigen bundle lein
+antigen bundle mvn 
+antigen bundle pip
+#antigen bundle pyenv
+#antigen bundle pylint 
+antigen bundle python 
+#antigen bundle scala 
+antigen bundle tmuxinator
+antigen bundle sublime 
+#antigen bundle vagrant 
+
+# Node Plugins
+#antigen bundle coffee
+antigen bundle node
+antigen bundle npm
+
+# # Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle sdurrheimer/docker-compose-zsh-completion
+antigen bundle safaci2000/docker-compose-zsh-completion
+#
+# # Load the theme.
+#antigen theme robbyrussell
+antigen theme muse
+
+
+#NOTE: OS detection not working atm.  Look into this.
+# OS specific plugins
+if [[ $CURRENT_OS == 'OS X' ]]; then
+    antigen bundle brew
+    antigen bundle brew-cask
+    antigen bundle gem
+    antigen bundle osx
+elif [[ $CURRENT_OS == 'Linux' ]]; then
+    if [[ $DISTRO == 'CentOS' ]]; then
+        antigen bundle centos
+        antigen bundle systemd
+    fi
+    if [[ $DISTRO == 'Fedora' ]]; then
+        antigen bundle fedora
+        antigen bundle systemd
+    fi
+fi
 
 bindkey -v  # use vi-style command line editing
 stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
 
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-
-# message formatting
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
-
-# describe options in full
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-
-# use completion caching
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
-
-# case-insensitive completion (uppercase from lowercase & underscores from dashes)
-zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}'
-
-# initialize the tab completion system
-autoload -Uz compinit
-compinit
 
 # enable powerful pattern-based renaming
 autoload zmv
 
-
 setopt autocd                # change to a diretory if typed alone
 setopt no_beep               # disable beep on all errors
 alias grep='grep --color=auto'  # show the matching string in color
-
-# web cat
-[[ -x $(which wget) ]] && alias wcat='wget -q -O - '
-
-# ssh and start a screen session on the remote server
-function sshs {
-	if [[ -z $* ]]; then
-		echo 'Usage: sshs [options] [user@]hostname'
-		echo 'SSH and automatically start a GNU screen session on the remote server'
-	else
-		ssh -t $* screen -DRU
-	fi
-}
-
-
-export GDK_NATIVE_WINDOWS=true  ##eclipse bug.
 
 ##### Global Aliases
 alias -g ...='../..'
@@ -68,9 +84,8 @@ for file in ~/.zsh_local/*.zsh; do
 	if [[ -e $file ]]; then
       		. $file
 	fi
-  done
-#source ~/.zsh_local/*.zsh
-#source ~/.zsh.d/*.zsh
+done
+
 export PATH=$PATH:$HOME/bin/private
 
 ## vim mode
@@ -80,11 +95,16 @@ bindkey -M vicmd 'v' edit-command-line
 
 alias openports='netstat --all --numeric --programs --inet --inet6'
 
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-source $HOME/.zsh_local/zshrc.sh
-# an example prompt
-
 [ -s "/Users/sfaci/.nvm/nvm.sh" ] && . "/Users/sfaci/.nvm/nvm.sh" # This loads nvm
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+#
+# # Tell antigen that you're done.
+antigen apply
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

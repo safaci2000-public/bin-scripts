@@ -7,3 +7,6 @@
 [submodule "fonts/powerline"]
 	path = fonts/powerline
 	url = https://github.com/Lokaltog/powerline-fonts.git
+[submodule "zsh_antigen"]
+	path = zsh_antigen
+	url = git@github.com:zsh-users/antigen.git

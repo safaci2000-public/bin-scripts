@@ -17,6 +17,7 @@ Bundle 'gmarik/vundle'
 Bundle 'safaci2000-stableProjects/csgeek-vimcustomizations'
 Bundle 'safaci2000-stableProjects/csgeek-python.vim.git'
 Bundle 'sjl/gundo.vim'
+"
 "git stuff
 Bundle 'tpope/vim-fugitive'
 "html helper
@@ -101,3 +102,12 @@ let g:neocomplcache_enable_at_startup = 1
 set modifiable
 let g:YUNOcommit_after = 2
 
+
+"snippets 
+"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
