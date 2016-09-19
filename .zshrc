@@ -5,40 +5,32 @@ source $HOME/bin/zsh_antigen/antigen.zsh
 antigen use oh-my-zsh
 #
 ## For SSH, starting ssh-agent is annoying
-antigen bundle ssh-agent
+#antigen bundle ssh-agent
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle aws
+#antigen bundle aws
 antigen bundle bower 
+#antigen bundle github
+#antigen bundle heroku
+#antigen bundle nmn/gulp.plugin.zsh
+#antigen bundle python 
+#antigen bundle scala 
+#antigen bundle sublime 
+#antigen bundle tmuxinator
 antigen bundle command-not-found
 antigen bundle docker
+#antigen bundle docker-compose 
+antigen bundle sdurrheimer/docker-compose-zsh-completion
 antigen bundle git
 antigen bundle git-extras
-#antigen bundle github
 #antigen bundle gradle 
-antigen bundle heroku
-#antigen bundle lein
 antigen bundle mvn 
 antigen bundle pip
-#antigen bundle pyenv
-#antigen bundle pylint 
-antigen bundle python 
-#antigen bundle scala 
-antigen bundle tmuxinator
-antigen bundle sublime 
-#antigen bundle vagrant 
+antigen bundle z 
 
-# Node Plugins
-#antigen bundle coffee
-antigen bundle node
-antigen bundle npm
-
-# # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-#antigen bundle sdurrheimer/docker-compose-zsh-completion
-antigen bundle safaci2000/docker-compose-zsh-completion
+# Syntax highlighting bundle.
+#antigen bundle zsh-users/zsh-syntax-highlighting
 #
 # # Load the theme.
-#antigen theme robbyrussell
 antigen theme muse
 
 
@@ -47,7 +39,6 @@ antigen theme muse
 if [[ $CURRENT_OS == 'OS X' ]]; then
     antigen bundle brew
     antigen bundle brew-cask
-    antigen bundle gem
     antigen bundle osx
 elif [[ $CURRENT_OS == 'Linux' ]]; then
     if [[ $DISTRO == 'CentOS' ]]; then
@@ -86,6 +77,12 @@ for file in ~/.zsh_local/*.zsh; do
 	fi
 done
 
+function processPort() 
+{
+
+    sudo lsof -n -i:$1 | grep LISTEN
+}
+
 export PATH=$PATH:$HOME/bin/private
 
 ## vim mode
@@ -101,10 +98,24 @@ export PATH="/usr/local/heroku/bin:$PATH"
 [ -s "/Users/sfaci/.nvm/nvm.sh" ] && . "/Users/sfaci/.nvm/nvm.sh" # This loads nvm
 
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
+#autoload -Uz compinit && compinit -i
 
 #
 # # Tell antigen that you're done.
 antigen apply
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+compinit
+skip_global_compinit=1
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/sfaci/.travis/travis.sh ] && source /Users/sfaci/.travis/travis.sh
+
+
+. /Users/sfaci/torch/install/bin/torch-activate
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/sfaci/projects/foss/hackaton/t/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/sfaci/projects/foss/hackaton/t/google-cloud-sdk/completion.zsh.inc'

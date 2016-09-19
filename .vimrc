@@ -47,7 +47,7 @@ Bundle 'wesgibbs/vim-irblack'
 "" vim-scripts
 Bundle 'msanders/snipmate.vim'
 Bundle 'maven-plugin'
-Bundle 'neocomplcache'
+"Bundle 'neocomplcache'
 " cucomber
 Bundle 'tpope/vim-cucumber'
 "" Vim improvements
@@ -111,3 +111,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" NerdTree fix
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
