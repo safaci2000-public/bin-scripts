@@ -8,12 +8,6 @@ PROJECT_DIR="$HOME/bin"   #set this to a different value if project is checked o
 
 function sanityCheck()
 {
-    which cabextract >& /dev/null
-    
-    if [ "$?" -ne 0 ] ; then
-    	echo "missing cabextract, please install it via apt-get install cabextract or yum install cabextract"
-    	exit 1;
-    fi	
     
     which curl >& /dev/null
     
@@ -32,20 +26,17 @@ function doGit()
 
 function clean()
 {
-	rm -friv $HOME/{.zshrc,.aliases,.vim,.vimrc}
+	rm -friv $HOME/{.zshrc,.zsh_local,.vim,.vimrc}
 	cd $HOME
 	ln -s $PROJECT_DIR/zshrc.zplug $HOME/.zshrc
 	ln -s $PROJECT_DIR/.vim
 	ln -s $PROJECT_DIR/.vimrc
 	ln -s $PROJECT_DIR/.zsh_local
 	ln -s $PROJECT_DIR/zplug $HOME/.zplug
-	ln -s $PROJECT_DIR/zsh_functions/generic_functions.zsh  $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/aliases.zsh $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/history.zsh $HOME/.zsh_local/
+	ln -s $PROJECT_DIR/zsh_functions/docker_override.zsh  $HOME/.zsh_local/
 	ln -s $PROJECT_DIR/zsh_functions/hotkeys.zsh $HOME/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/maven.zsh $HOME/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/gitstatus.py $HOME/.zsh_local/
-	ln -s $PROJECT_DIR/zsh_functions/zshrc.sh $HOME/.zsh_local/
     ln -s $PROJECT_DIR/zsh_functions/neustar.zsh $PROJECT_DIR/.zsh_local/
 }		
 

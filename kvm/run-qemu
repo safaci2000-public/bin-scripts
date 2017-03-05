@@ -1,9 +1,0 @@
-#!/bin/bash
-USERID=`whoami`
-IFACE=$(sudo tunctl -b -u $USERID)
-
-echo $(echo -n DE:AD:BE:EF ; for i in `seq 1 2` ;
-do echo -n `echo ":$RANDOM$RANDOM" | cut -n -c -3` ;done)
-
-qemu-kvm -enable-kvm -net nic,macaddr=$macaddress -net tap,ifname="$IFACE" $*
-sudo tunctl -d $IFACE &> /dev/null
