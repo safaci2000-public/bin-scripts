@@ -1,0 +1,102 @@
+# Essential
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+
+source ~/.zplug/init.zsh
+
+# Async for zsh, used by pure
+#zplug "mafredri/zsh-async", from:github, defer:0
+# # Load completion library for those sweet [tab] squares
+zplug "lib/completion", from:oh-my-zsh
+# # Syntax highlighting for commands, load last
+zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:2
+# Theme!
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "plugins/aws", from:oh-my-zsh
+zplug "plugins/bower", from:oh-my-zsh
+zplug "plugins/docker",   from:oh-my-zsh
+zplug "plugins/docker-compose",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git-extras",   from:oh-my-zsh
+zplug "plugins/gradle", from:oh-my-zsh, lazy:true
+zplug "plugins/mvn", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/python", from:oh-my-zsh, lazy:true
+zplug "plugins/repo", from:oh-my-zsh, lazy:true
+zplug "plugins/scala", from:oh-my-zsh, lazy:true
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "tcnksm/docker-alias", use:zshrc
+zplug "rupa/z", use:'*.sh'
+
+## Load theme file
+#### Required for ohmyzsh themes.
+### This part doesn't work quiet right.  
+#zplug "lib/theme-and-appearance", from:oh-my-zsh  
+#zplug 'akabiru/rafiki-zsh',  as:theme
+#zplug "themes/robbyrussell", from:oh-my-zsh
+zplug "themes/robbyrussell", from:oh-my-zsh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+
+##### Global Aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g BR='>& /dev/null &|'
+
+
+zplug load
+
+
+bindkey -v  # use vi-style command line editing
+stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
+
+# enable powerful pattern-based renaming
+autoload zmv
+######
+setopt autocd                # change to a diretory if typed alone
+setopt no_beep               # disable beep on all errors
+alias grep='grep --color=auto'  # show the matching string in color
+
+######
+setopt EXTENDED_GLOB
+for file in ~/.zsh_local/*.zsh; do
+	if [[ -e $file ]]; then
+      		. $file
+	fi
+done
+
+function processPort() 
+{
+
+    sudo lsof -n -i:$1 | grep LISTEN
+}
+
+export PATH=$PATH:$HOME/bin/private
+
+## vim mode
+set -o vi 
+autoload -Uz edit-command-line
+zle -N edit-command-line 
+bindkey -M vicmd 'v' edit-command-line
+
+alias openports='netstat --all --numeric --programs --inet --inet6'
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
