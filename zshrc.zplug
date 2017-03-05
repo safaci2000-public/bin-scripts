@@ -32,7 +32,8 @@ zplug "plugins/python", from:oh-my-zsh, lazy:true
 zplug "plugins/repo", from:oh-my-zsh, lazy:true
 zplug "plugins/scala", from:oh-my-zsh, lazy:true
 zplug "plugins/ssh-agent", from:oh-my-zsh
-zplug "tcnksm/docker-alias", use:zshrc
+zplug "safaci2000/docker-alias", use:zshrc
+#zplug "tcnksm/docker-alias", use:zshrc
 zplug "tysonwolker/iterm-tab-colors"
 zplug "rupa/z", use:'*.sh'
 

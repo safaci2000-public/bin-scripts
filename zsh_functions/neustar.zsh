@@ -78,6 +78,7 @@ pyEnv
 mydocker 
 overridePaths
 
+EDITOR=$(which vim)
 M2_HOME=/usr/local/Cellar/maven31/3.1.1/libexec
 LDFLAGS="-L/usr/local/opt/openssl/lib"
 CPPFLAGS="-I/usr/local/opt/openssl/include"
