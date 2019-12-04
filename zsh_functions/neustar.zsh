@@ -12,7 +12,7 @@ function hideFiles()
 
 function pushup() 
 {
-   git push gerrit HEAD:refs/for/release-2016-$1
+   git push gerrit HEAD:refs/for/release-2017-$1
 }
 
 function generateAliases()
@@ -30,13 +30,23 @@ function generateAliases()
     alias work3pas='cd ~/projects/3pas'
     alias foss='cd ~/projects/foss/'
     alias services='cd ~/projects/neuak/eng-neuak-services'
+    alias nexusOn='mv ~/.m2/old_settings ~/.m2/settings.xml'
+    alias nexusOff='mv ~/.m2/settings.xml ~/.m2/old_settings'
+
 
 }
 
-function setJDK8() 
+function setJDK() 
 {
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
+  export OLDPATH=$PATH
+  export PATH=$JAVA_HOME/bin:$PATH
+}
 
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
+
+function setJDK11() 
+{
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
   export OLDPATH=$PATH
   export PATH=$JAVA_HOME/bin:$PATH
 }
@@ -45,7 +55,7 @@ function pyEnv()
 {
     alias venv='source $HOME/projects/python/venv/bin/activate'
     alias venv3='source $HOME/projects/python/venv3/bin/activate'
-    #if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+    export PATH=$PATH:/usr/local/Cellar/python3/3.6.1/bin
 
 }
 
@@ -57,7 +67,8 @@ function pushbranch()
 
 function mydocker() 
 {
-    PATH=$PATH:~/projects/docker/docker-images
+    PATH=$PATH:~/projects/docker/mip-db/docker_scripts/
+    PATH=$PATH:~/projects/docker/docker-images/
     alias d=docker 
     alias dc='docker-compose'
     alias dm='docker-machine'
@@ -72,8 +83,10 @@ function overridePaths()
    PATH=$PATH:"/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 }
 
+
+PATH=$PATH:/usr/local/Cellar/mysql-client/5.7.23/bin 
 generateAliases
-setJDK8
+setJDK
 pyEnv
 mydocker 
 overridePaths
@@ -85,8 +98,18 @@ CPPFLAGS="-I/usr/local/opt/openssl/include"
 SCALA_HOME="/usr/local/Cellar/scala/2.11.2/libexec"
 
 PATH=$PATH:$HOME/platform-tools/git/
+PATH=$PATH:/Library/TeX/texbin
 
-
+PATH=/Users/samirfaci/Library/Python/2.7/bin:$PATH
 #source $HOME/.nix-profile/etc/profile.d/nix.sh
 #queryNixPkgs(){ nix-env -qa \* -P -f $NIXPKGS_ALL | grep -i "$1"; }
+alias ddp='pkill -INFO -x dd'
  
+alias sql='docker_sql.sh'
+alias m2off='mv -v ~/.m2/settings.xml ~/.m2/settings.old'
+alias m2on='mv -v ~/.m2/settings.old ~/.m2/settings.xml'
+alias demo="docker_sql.sh demo"
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+PATH=$PATH:$HOME/.gen3
